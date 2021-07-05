@@ -12,37 +12,52 @@
             <link rel="shortcut icon" type="image/x-icon"
                   href="resources/images/arioallogo.png"/>
             <link rel="stylesheet" type="text/css" href="resources/css/default.css"/>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         </h:head>
-        <h:body style="background-color: whitesmoke">
-            <p:card style="width: 350px; margin: 0 auto">
-                <h:graphicImage value="/resources/images/arioaltype.png" width="90"/>
-                <h:form>
+        <h:body style="background-color: whitesmoke; height: 100%">
+            <div class="d-center" style="height: 100%">
+                <p:card style="width: 350px; margin: 0">
 
                     <f:facet name="title">
+                        <h:graphicImage value="/resources/images/arioaltype.png" width="90"/>
+                        <br/>
                         Login
                     </f:facet>
                     <f:facet name="subtitle">
                         Please log in to system.
                     </f:facet>
 
-                    <span class="ui-float-label">
-                        <p:inputText id="username" styleClass="p-d-block" title="Username"
-                                     value="#{loginController.username}"
-                                     requiredMessage="Username is required." maxlength="30" type="username"/>
-                        <p:outputLabel for="@previous" value="Username"/>
-                    </span>
+                    <h:form id="login-form">
+                        <div class="ui-fluid" style="padding: 20px 0">
+                            <div class="p-field" style="margin-bottom: 10px">
+                                <span class="ui-float-label">
+                                    <p:inputText id="username" styleClass="p-d-block" title="Username"
+                                                 value="#{loginController.username}"
+                                                 requiredMessage="Username is required." maxlength="30"
+                                                 type="username"/>
+                                    <p:outputLabel for="@previous" value="Username"/>
+                                </span>
+                            </div>
 
-                    <span class="ui-float-label">
-                        <p:password id="toggle" value="#{loginController.password}" toggleMask="true" redisplay="true"/>
-                        <p:outputLabel for="@previous" value="Password"/>
-                    </span>
+                            <div class="p-field">
+                                <span class="ui-float-label">
+                                    <p:password id="toggle" value="#{loginController.password}" toggleMask="true"
+                                                redisplay="true" style="width: 100%"/>
+                                    <p:outputLabel for="@previous" value="Password"/>
+                                </span>
+                            </div>
+                        </div>
 
-                    <p:commandButton type="submit" update="@form" value="Login" styleClass="ui-button-raised"
-                                     action="${loginController.execute}" ajax="false"/>
-                    <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
-                </h:form>
-            </p:card>
+                        <p:commandButton type="submit" update="@form" value="Login" styleClass="ui-button-raised"
+                                         action="${loginController.execute}" ajax="false"/>
+                        <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
+                    </h:form>
+
+                    <f:facet name="footer">
+                        <p:link value="Source code" href="https://github.com/Ig-v-k/Arioal"/>
+                    </f:facet>
+                </p:card>
+            </div>
         </h:body>
     </f:view>
 </html>
