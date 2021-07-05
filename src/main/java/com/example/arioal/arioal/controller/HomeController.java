@@ -4,19 +4,20 @@ import com.example.arioal.arioal.entities.User;
 import com.example.arioal.arioal.service.DataService;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.SecurityContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.Optional;
 
 @Named
-@ViewScoped
-public class HomeController {
+@RequestScoped
+public class HomeController implements Serializable {
   @Inject
   DataService dataService;
 

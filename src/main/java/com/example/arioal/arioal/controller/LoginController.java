@@ -14,10 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
+import java.io.Serializable;
 
 @Named
 @ViewScoped
-public class LoginController {
+public class LoginController implements Serializable {
   @NotEmpty
   private String username;
   @NotEmpty

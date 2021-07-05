@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class DataService {
-  @PersistenceContext(unitName = "emSecureAppArioal")
+  @PersistenceContext(unitName = "ArioalJDBC")
   EntityManager entityManager;
 
   @Inject
