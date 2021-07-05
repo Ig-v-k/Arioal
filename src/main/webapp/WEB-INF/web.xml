@@ -20,11 +20,29 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>com.example.arioal.arioal.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
+    </filter-mapping>
+
+
+    <!--  security  -->
     <security-constraint>
         <display-name>Admin Role</display-name>
         <web-resource-collection>
             <web-resource-name>All App Pages</web-resource-name>
             <url-pattern>/arioal/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -35,6 +53,8 @@
         <web-resource-collection>
             <web-resource-name>Profile Page</web-resource-name>
             <url-pattern>/arioal/home.xhtml</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -47,12 +67,14 @@
     <security-role>
         <role-name>user</role-name>
     </security-role>
+    <!--  security  -->
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.xhtml</welcome-file>
+        <welcome-file>/home.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
