@@ -23,13 +23,8 @@ public class SecurityFilter implements Filter {
 
 	final String loginUrl = request.getContextPath() + "/login.xhtml?faces-redirect=true";
 
-	if (request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)) {
-	  filterChain.doFilter(servletRequest, servletResponse);
-	} else {
-	  if (request.getServletPath().equals("/login.xhtml") || request.getServletPath().equals(loginUrl)) {
-		filterChain.doFilter(servletRequest, servletResponse);
-		return;
-	  } else {
+	if (!request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)) {
+	  if (!request.getServletPath().equals("/login.xhtml") && !request.getServletPath().equals(loginUrl)) {
 		if (principalUser == null) {
 		  if ("partial/ajax".equals(request.getHeader("Faces-Request"))) {
 			response.setContentType("text/xml");
@@ -41,9 +36,9 @@ public class SecurityFilter implements Filter {
 		  }
 		  return;
 		}
-
-		filterChain.doFilter(servletRequest, servletResponse);
 	  }
 	}
+
+	filterChain.doFilter(servletRequest, servletResponse);
   }
 }
