@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <h:head>
+            <title>Arioal | Home</title>
+            <link rel="icon" href="resources/images/arioallogo.png"/>
+        </h:head>
+        <h:body style="background-color: whitesmoke">
+            <p:card>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:graphicImage value="/resources/images/arioaltype.png" width="90"/>
+                    </f:facet>
+                    <f:facet name="right">
+                        <span><h:outputText value="#{homeController.currentUser.name}"/></span>
+                        <h:form>
+                            <p:commandButton value="Logout" action="#{homeController.logout}"/>
+                        </h:form>
+                    </f:facet>
+                </p:toolbar>
+            </p:card>
+        </h:body>
+    </f:view>
+</html>

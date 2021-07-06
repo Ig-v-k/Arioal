@@ -1,17 +1,16 @@
 package com.example.arioal.arioal;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.faces.application.ResourceHandler;
 import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
 
+@WebFilter({"/*"})
 public class SecurityFilter implements Filter {
   @Inject
   SecurityContext securityContext;
@@ -42,6 +41,8 @@ public class SecurityFilter implements Filter {
 		  }
 		  return;
 		}
+
+		filterChain.doFilter(servletRequest, servletResponse);
 	  }
 	}
   }

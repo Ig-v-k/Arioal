@@ -13,6 +13,7 @@ import javax.security.enterprise.SecurityContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.Optional;
 
 @Named
@@ -31,7 +32,8 @@ public class HomeController implements Serializable {
 
   @PostConstruct
   public void initialize() {
-	String username = securityContext.getCallerPrincipal().getName();
+	Principal principal = securityContext.getCallerPrincipal();
+	String username = (principal == null) ? "Anonymous" : principal.getName();
 	this.currentUser = dataService.getUser(username);
   }
 
