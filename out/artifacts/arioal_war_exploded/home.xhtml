@@ -5,18 +5,59 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
     <f:view>
         <h:body style="background-color: whitesmoke">
             <ui:composition template="templates/layout_template.xhtml">
                 <ui:define name="title_page">Arioal | Home</ui:define>
+
+                <ui:define name="left_content">
+                    <div class="p-p-3" style="background-color: white">
+                        <div class="p-grid p-flex-column">
+                            <div class="p-col">
+                                <div class="box">Plan dnia</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Zalegle</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Otrzymane</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Zalecone</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Uzupelnij</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Powiadomienia</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Bez wykonawcy</div>
+                            </div>
+                            <div class="p-col">
+                                <div class="box">Przydzielone</div>
+                            </div>
+                        </div>
+                    </div>
+                </ui:define>
+
                 <ui:define name="main_content">
                     <h1>
                         <h:outputText value="#{homeController.currentUser.name}"/>
                     </h1>
                 </ui:define>
+
                 <ui:define name="bottom_content">
-                    'home' page bottom
+                    <p:divider align="left">
+                        <div class="p-d-inline-flex p-ai-center">
+                            <i class="pi pi-user p-mr-2"/>
+                            <b>Icon</b>
+                        </div>
+                    </p:divider>
+                    <div style="background-color: white">
+                        'home' page bottom
+                    </div>
                 </ui:define>
             </ui:composition>
         </h:body>

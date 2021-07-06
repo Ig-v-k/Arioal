@@ -14,9 +14,11 @@ html {
 }
 
 #page {
-    height: 60%;
+    margin-top: 5%;
+    height: 100%;
 }
 
 #container {
+    margin: 0 auto;
     width: 70%;
 }

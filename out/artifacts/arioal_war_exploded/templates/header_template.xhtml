@@ -2,10 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-  <body>
-    <ui:composition>
-      <h4>Page template section 'header'</h4>
-    </ui:composition>
-  </body>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        <ui:composition>
+            <div class="p-grid">
+                <div class="p-col">
+                    <p:commandButton type="button" value="DZIALANIA" styleClass="ui-button-primary ui-button-flat"
+                                     icon="pi pi-cog"/>
+                    <p:commandButton type="button" value="KONTAKTY" styleClass="ui-button-secondary ui-button-flat"
+                                     icon="pi pi-book"/>
+                    <p:commandButton type="button" value="KALENDARZ" styleClass="ui-button-secondary ui-button-flat"
+                                     icon="pi pi-calendar"/>
+                    <p:commandButton type="button" value="PLIKI" styleClass="ui-button-secondary ui-button-flat"
+                                     icon="pi pi-file"/>
+                    <p:commandButton type="button" value="RAPORTY" styleClass="ui-button-secondary ui-button-flat"
+                                     icon="pi pi-pencil"/>
+                    <p:commandButton type="button" value="ADMIN" styleClass="ui-button-secondary ui-button-flat"
+                                     icon="pi pi-key"/>
+                </div>
+                <div class="p-col-fixed">
+                    <div class="p-grid">
+                        <div class="p-col">
+                            <h:form>
+                                <p:menuButton value="${p:userPrincipal().name}" styleClass="rounded-button ui-button-secondary">
+                                    <p:menuitem value="Wyloguj" action="#{homeController.logout}" ajax="false" icon="pi pi-power-off"/>
+                                    <p:menuitem value="Konto" icon="pi pi-user"/>
+                                    <p:menuitem value="Delete" icon="pi pi-trash"/>
+                                    <p:divider/>
+                                    <p:menuitem value="Website" url="https://github.com/Ig-v-k/Arioal" icon="pi pi-external-link"/>
+                                </p:menuButton>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:composition>
+    </body>
 </html>

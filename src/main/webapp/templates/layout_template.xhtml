@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
@@ -16,10 +16,10 @@
         <ui:insert name="head_content"/>
     </h:head>
 
-    <h:body style="height: 85%">
-        <div id="page" class="d-center">
+    <h:body style="height: 96%; background-color: whitesmoke">
+        <div id="page">
             <div id="container" class="p-grid nested-grid p-ai-stretch vertical-container">
-                <div class="p-col-12 p-mb-2" style="background-color: whitesmoke">
+                <div class="p-col-12 p-mb-2" style="background-color: whitesmoke; height: 57px">
                     <div id="top_content" class="">
                         <ui:insert name="top_content">
                             <ui:include src="/templates/header_template.xhtml"/>
@@ -40,7 +40,7 @@
                                 <ui:include src="/templates/content_template.xhtml"/>
                             </ui:insert>
                         </div>
-                        <div class="p-col-12" style="background-color: whitesmoke">
+                        <div class="p-col-12" style="background-color: white">
                             <div id="bottom_content">
                                 <ui:insert name="bottom_content"/>
                             </div>
