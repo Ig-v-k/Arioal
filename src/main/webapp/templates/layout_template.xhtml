@@ -8,17 +8,17 @@
     <h:head>
         <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
         <link type="text/css" rel="stylesheet" href="resources/css/primeflex.css"/>
-        <title><ui:insert name="title_page">Arioal | layout_template</ui:insert></title>
         <link rel="shortcut icon" type="image/x-icon" href="resources/images/arioallogo.png"/>
+        <title><ui:insert name="title_page">Arioal | layout_template</ui:insert></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
         <ui:insert name="head_content"/>
     </h:head>
 
-    <h:body>
-        <div id="page">
-            <div class="p-grid nested-grid p-ai-stretch vertical-container">
+    <h:body style="height: 85%">
+        <div id="page" class="d-center">
+            <div id="container" class="p-grid nested-grid p-ai-stretch vertical-container">
                 <div class="p-col-12 p-mb-2" style="background-color: whitesmoke">
                     <div id="top_content" class="">
                         <ui:insert name="top_content">
@@ -34,17 +34,17 @@
                             </ui:insert>
                         </div>
                     </div>
-                    <div class="p-col-9">
+                    <div class="p-col-9 p-mb-2">
                         <div id="main_content">
                             <ui:insert name="main_content">
                                 <ui:include src="/templates/content_template.xhtml"/>
                             </ui:insert>
                         </div>
-                    </div>
-                </div>
-                <div class="p-col-12 p-mb-2" style="background-color: whitesmoke">
-                    <div id="bottom_content">
-                        <ui:insert name="bottom_content"/>
+                        <div class="p-col-12" style="background-color: whitesmoke">
+                            <div id="bottom_content">
+                                <ui:insert name="bottom_content"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="p-col-12 p-mb-2" style="background-color: whitesmoke">

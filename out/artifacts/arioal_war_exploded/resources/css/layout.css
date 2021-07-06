@@ -12,3 +12,11 @@ html {
     align-items: center;
     justify-content: center
 }
+
+#page {
+    height: 60%;
+}
+
+#container {
+    width: 70%;
+}
