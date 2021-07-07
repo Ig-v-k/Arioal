@@ -1,0 +1,15 @@
+#welcome-banner-card .ui-card-content {
+    padding: 0;
+}
+
+#bottom-content-card .ui-card-content {
+    padding: 0;
+}
+
+#divider-content-style .ui-divider-content {
+    background-color: whitesmoke;
+}
+
+.pad-ver-0 {
+    padding: 0;
+}

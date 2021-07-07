@@ -3,60 +3,164 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui">
     <f:view>
         <h:body style="background-color: whitesmoke">
             <ui:composition template="templates/layout_template.xhtml">
                 <ui:define name="title_page">Arioal | Home</ui:define>
+                <ui:define name="head_content">
+                    <link type="text/css" rel="stylesheet" href="resources/css/layout_home.css"/>
+                </ui:define>
 
                 <ui:define name="left_content">
-                    <div class="p-p-3" style="background-color: white">
-                        <div class="p-grid p-flex-column">
-                            <div class="p-col">
-                                <div class="box">Plan dnia</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Zalegle</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Otrzymane</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Zalecone</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Uzupelnij</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Powiadomienia</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Bez wykonawcy</div>
-                            </div>
-                            <div class="p-col">
-                                <div class="box">Przydzielone</div>
-                            </div>
-                        </div>
-                    </div>
+                    <p:card id="welcome-banner-card">
+                        <h5 class="p-my-1"><i class="pi pi-sun p-mr-1"
+                                              style="color: coral"/>Czesc! Zapraszamy w Arioal! Przed rozpoczeciem, prosimy uzupelnic Wasze konto, aby wiedzic o Was wiecej.
+                            <p:link outcome="konto.xhtml" value="Konto"/></h5>
+                    </p:card>
                 </ui:define>
 
                 <ui:define name="main_content">
-                    <h1>
-                        <h:outputText value="#{homeController.currentUser.name}"/>
-                    </h1>
+                    <p:card>
+                        <h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>
+                        <p:tabView dynamic="true" cache="true">
+                            <p:tab title="Plan dnia">
+                                <div class="p-grid p-ai-center vertical-container">
+                                    <div class="p-col">
+                                        <h5>Plan dnia</h5>
+                                    </div>
+                                    <div class="p-col-fixed">
+                                        <p:commandButton type="button" value="Powieksz"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" value="Odswiez"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" value="Pokaz wszystkie"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" icon="pi pi-question"
+                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" icon="pi pi-print"
+                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                    </div>
+                                </div>
+                                <p:divider />
+                                <div class="p-grid">
+                                    <div class="p-col p-d-flex p-jc-center p-ai-center">
+                                        <p:outputLabel for="navigator" value="Data:" styleClass="p-mr-2"/>
+                                        <p:datePicker id="navigator" value="#{calendarView.date}"
+                                                      monthNavigator="true" yearNavigator="true"
+                                                      showWeek="true" pattern="dd.MM.yyyy"/>
+                                    </div>
+                                    <div class="p-col-fixed">
+                                        Dodaj:
+                                        <p:commandButton type="button" value="wykonane"
+                                                         styleClass="ui-button-primary ui-button-flat" icon="pi pi-plus-circle"/>
+                                        <p:commandButton type="button" value="planowanie"
+                                                         styleClass="ui-button-primary ui-button-flat" icon="pi pi-plus-circle"/>
+                                    </div>
+                                </div>
+                                <p:panelGrid styleClass="p-mt-2" style="width: 100%">
+                                    <f:facet name="header">
+                                        <p:row>
+                                            <p:column colspan="2">1</p:column>
+                                            <p:column colspan="2">2</p:column>
+                                            <p:column colspan="2">3</p:column>
+                                            <p:column colspan="2">4</p:column>
+                                            <p:column colspan="2">5</p:column>
+                                            <p:column colspan="2">6</p:column>
+                                        </p:row>
+                                    </f:facet>
+
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Seattle</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column>Houston</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="4" styleClass="ui-widget-header">
+                                            <p:spacer height="0"/>
+                                        </p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="font-weight: bold;">Utah</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column>San Antonio</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="6" styleClass="ui-widget-header">
+                                            <p:spacer height="0"/>
+                                        </p:column>
+                                    </p:row>
+
+
+                                    <f:facet name="footer">
+                                        <p:row>
+                                            <p:column colspan="4" style="text-align: right">
+                                                Finals MVP
+                                            </p:column>
+                                            <p:column colspan="3" rowspan="3">
+                                                Michael Jordan (Chicago)
+                                            </p:column>
+                                        </p:row>
+
+                                        <p:row>
+                                            <p:column colspan="4" style="text-align: right">
+                                                Season MVP
+                                            </p:column>
+                                        </p:row>
+                                        <p:row>
+                                            <p:column colspan="4" style="text-align: right">
+                                                Top Scorer
+                                            </p:column>
+                                        </p:row>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </p:tab>
+                            <p:tab title="Zalegle">
+                                <p class="p-m-0">'Zalegle'</p>
+                            </p:tab>
+                            <p:tab title="Otrzymane">
+                                <p class="p-m-0">'Otrzymane'</p>
+                            </p:tab>
+                            <p:tab title="Zalecone">
+                                <p class="p-m-0">'Zalecone'</p>
+                            </p:tab>
+                            <p:tab title="Uzupelnic">
+                                <p class="p-m-0">'Uzupelnic'</p>
+                            </p:tab>
+                            <p:tab title="Powiadomienia">
+                                <p class="p-m-0">'Powiadomienia'</p>
+                            </p:tab>
+                            <p:tab title="Bez wykonawcy">
+                                <p class="p-m-0">'Bez wykonawcy'</p>
+                            </p:tab>
+                            <p:tab title="Przydzielenie">
+                                <p class="p-m-0">'Przydzielenie'</p>
+                            </p:tab>
+                        </p:tabView>
+                    </p:card>
                 </ui:define>
 
                 <ui:define name="bottom_content">
-                    <p:divider align="left">
-                        <div class="p-d-inline-flex p-ai-center">
-                            <i class="pi pi-user p-mr-2"/>
-                            <b>Icon</b>
+                    <div>
+                        <p:divider id="divider-content-style" align="left">
+                            <div class="p-d-inline-flex p-ai-center">
+                                <i class="pi pi-user p-mr-2"/>
+                                <b>Icon</b>
+                            </div>
+                        </p:divider>
+                        <div>
+                            'home' page bottom
                         </div>
-                    </p:divider>
-                    <div style="background-color: white">
-                        'home' page bottom
                     </div>
                 </ui:define>
             </ui:composition>
