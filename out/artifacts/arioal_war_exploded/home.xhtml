@@ -56,48 +56,64 @@
                                     <div class="p-col-fixed">
                                         Dodaj:
                                         <p:commandButton type="button" value="wykonane"
-                                                         styleClass="ui-button-primary ui-button-flat" icon="pi pi-plus-circle"/>
+                                                         styleClass="ui-button-success ui-button-flat" icon="pi pi-plus-circle"/>
                                         <p:commandButton type="button" value="planowanie"
-                                                         styleClass="ui-button-primary ui-button-flat" icon="pi pi-plus-circle"/>
+                                                         styleClass="ui-button-success ui-button-flat" icon="pi pi-plus-circle"/>
                                     </div>
                                 </div>
                                 <p:panelGrid styleClass="p-mt-2" style="width: 100%">
                                     <f:facet name="header">
                                         <p:row>
-                                            <p:column colspan="2">1</p:column>
-                                            <p:column colspan="2">2</p:column>
-                                            <p:column colspan="2">3</p:column>
-                                            <p:column colspan="2">4</p:column>
-                                            <p:column colspan="2">5</p:column>
-                                            <p:column colspan="2">6</p:column>
+                                            <p:column styleClass="p-p-0">
+                                                <p:commandButton type="button" icon="pi pi-ellipsis-v"
+                                                                 styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                            </p:column>
+                                            <p:column>Data</p:column>
+                                            <p:column>N</p:column>
+                                            <p:column>Kategoria / Priorytet / Opis</p:column>
+                                            <p:column>Kontakt</p:column>
+                                            <p:column>Status</p:column>
                                         </p:row>
                                     </f:facet>
 
                                     <p:row>
-                                        <p:column style="font-weight: bold;">Seattle</p:column>
-                                    </p:row>
-
-                                    <p:row>
-                                        <p:column>Houston</p:column>
-                                    </p:row>
-
-                                    <p:row>
-                                        <p:column colspan="4" styleClass="ui-widget-header">
-                                            <p:spacer height="0"/>
+                                        <p:column>
+                                            <p:selectBooleanCheckbox value="false"/>
                                         </p:column>
-                                    </p:row>
+                                        <p:column>
+                                            '02 lip(Sr)'
+                                        </p:column>
+                                        <p:column>
+                                            <p:selectBooleanButton onLabel="" offLabel="" onIcon="pi pi-star-o" offIcon="pi pi-star"/>
+                                        </p:column>
+                                        <p:column>
+                                            <div class="d-flex">
+                                                <h6><i class="pi pi-phone"/> SMS</h6>
+                                            </div>
+                                            <p:panelGrid columns="3" layout="flex" styleClass="showcase-text-align-start">
+                                                <h:outputText value="wyk.:"/>
+                                                <h:outputText value="Jan"/>
+                                                <div></div>
 
-                                    <p:row>
-                                        <p:column style="font-weight: bold;">Utah</p:column>
-                                    </p:row>
+                                                <h:outputText value="cele:"/>
+                                                <h:outputText value="kontakt po ofercie"/>
+                                                <div></div>
 
-                                    <p:row>
-                                        <p:column>San Antonio</p:column>
-                                    </p:row>
+                                                <h:outputText value="tresc:"/>
+                                                <p:commandButton type="button" icon="pi pi-comment"
+                                                                 styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                                <div></div>
 
-                                    <p:row>
-                                        <p:column colspan="6" styleClass="ui-widget-header">
-                                            <p:spacer height="0"/>
+                                                <h:outputText value="opis:"/>
+                                                <h:outputText value="objaśnienie "/>
+                                                <div></div>
+
+                                                <h:outputText value="info:"/>
+                                                <p:commandButton type="button" icon="pi pi-comments"
+                                                                 styleClass="rounded-button ui-button-warning ui-button-flat"/>
+                                                <p:commandButton type="button" value="Wyslij"
+                                                                 styleClass="ui-button-primary ui-button-flat" icon="pi pi-envelope"/>
+                                            </p:panelGrid>
                                         </p:column>
                                     </p:row>
 
