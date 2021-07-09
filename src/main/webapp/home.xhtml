@@ -147,9 +147,7 @@
                                             </p:panelGrid>
                                         </p:column>
                                         <p:column headerText="Status" style="width: 45px;text-align:center">
-                                            <h:outputText rendered="#{act.actionStatus}">
-                                                <i class="pi pi-check" style="color: green"/>
-                                            </h:outputText>
+                                            <p:button rendered="#{act.actionStatus}" icon="pi pi-check" styleClass="rounded-button ui-button-success ui-button-flat" />
                                         </p:column>
 
                                     </p:dataTable>
