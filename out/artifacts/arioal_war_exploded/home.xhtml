@@ -15,15 +15,15 @@
                     <link type="text/css" rel="stylesheet" href="resources/css/layout_home.css"/>
                 </ui:define>
 
-<!--
-                <ui:define name="left_content">
-                    <p:card id="welcome-banner-card">
-                        <h5 class="p-my-1"><i class="pi pi-sun p-mr-1"
-                                              style="color: coral"/>Czesc! Zapraszamy w Arioal! Przed rozpoczeciem, prosimy uzupelnic Wasze konto, aby wiedzic o Was wiecej.
-                            <p:link outcome="konto.xhtml" value="Konto"/></h5>
-                    </p:card>
-                </ui:define>
--->
+                <!--
+                                <ui:define name="left_content">
+                                    <p:card id="welcome-banner-card">
+                                        <h5 class="p-my-1"><i class="pi pi-sun p-mr-1"
+                                                              style="color: coral"/>Czesc! Zapraszamy w Arioal! Przed rozpoczeciem, prosimy uzupelnic Wasze konto, aby wiedzic o Was wiecej.
+                                            <p:link outcome="konto.xhtml" value="Konto"/></h5>
+                                    </p:card>
+                                </ui:define>
+                -->
 
                 <ui:define name="main_content">
                     <p:card id="welcome-banner-card" styleClass="p-mb-3">
@@ -64,6 +64,7 @@
                                         Dodaj:
                                         <p:commandButton type="button" value="wykonane"
                                                          styleClass="ui-button-success ui-button-flat"
+                                                         onclick="PF('dlg2').show()"
                                                          icon="pi pi-plus-circle"/>
                                         <p:commandButton type="button" value="planowanie"
                                                          styleClass="ui-button-success ui-button-flat"
@@ -154,25 +155,33 @@
                                             </p:panelGrid>
                                         </p:column>
                                         <p:column headerText="Status" style="width: 45px;text-align:center">
-                                            <p:button rendered="#{act.actionStatus}" icon="pi pi-check" styleClass="rounded-button ui-button-success ui-button-flat" />
+                                            <p:button rendered="#{act.actionStatus}" icon="pi pi-check"
+                                                      styleClass="rounded-button ui-button-success ui-button-flat"/>
                                         </p:column>
 
                                     </p:dataTable>
                                     <!-- delete context menu -->
                                     <p:contextMenu for="dt_actions">
                                         <p:menuitem value="Usunac" update="dt_actions" icon="pi pi-trash"
-                                                    action="#{dtActionBean.deleteSelectedActionList}"/>
+                                                    action="#{dtActionBean.deleteSelectedActionList}">
+                                            <p:confirm header="Confirmation" message="Do you want to delete this record?" icon="pi pi-info-circle"/>
+                                        </p:menuitem>
                                     </p:contextMenu>
                                     <!-- delete confirm dialog -->
-                                    <p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
-                                                     message="Delete the product?" header="Confirm" severity="warn">
-                                        <p:commandButton value="Yes" icon="pi pi-check"
-                                                         actionListener="#{dtActionBean.deleteSelectedActionList}"
-                                                         process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
-                                        <p:commandButton value="No" type="button" styleClass="ui-button-secondary"
-                                                         icon="pi pi-times"
-                                                         onclick="PF('deleteProductDialog').hide()"/>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
                                     </p:confirmDialog>
+                                    <!-- new 'wykonane' dialog - modal -->
+                                    <p:dialog header="Header" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade" modal="true" maximizable="true">
+                                        <p:outputPanel id="manage-wykonane-content" class="ui-fluid">
+                                            <p:commandButton type="button" value="Secondary" styleClass="ui-button-raised ui-button-secondary" />
+                                        </p:outputPanel>
+                                        <p class="p-m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </p:dialog>
 
                                 </h:form>
                             </p:tab>

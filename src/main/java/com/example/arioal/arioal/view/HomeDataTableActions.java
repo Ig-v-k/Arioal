@@ -26,6 +26,10 @@ public class HomeDataTableActions implements Serializable {
     actionList = actionService.getAll();
   }
 
+  public void openNew() {
+    selectedAction = new Action();
+  }
+
   public void deleteSelectedActionList() {
     actionList.removeAll(selectedActionList);
     selectedActionList = Collections.emptyList();

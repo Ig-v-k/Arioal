@@ -30,6 +30,10 @@ public class Action implements Serializable {
 	this.actionStatus = actionStatus;
   }
 
+  public Action() {
+
+  }
+
   public int getId() {
 	return id;
   }
