@@ -15,6 +15,7 @@
                     <link type="text/css" rel="stylesheet" href="resources/css/layout_home.css"/>
                 </ui:define>
 
+<!--
                 <ui:define name="left_content">
                     <p:card id="welcome-banner-card">
                         <h5 class="p-my-1"><i class="pi pi-sun p-mr-1"
@@ -22,8 +23,14 @@
                             <p:link outcome="konto.xhtml" value="Konto"/></h5>
                     </p:card>
                 </ui:define>
+-->
 
                 <ui:define name="main_content">
+                    <p:card id="welcome-banner-card" styleClass="p-mb-3">
+                        <h5 class="p-my-1"><i class="pi pi-sun p-mr-1"
+                                              style="color: coral"/>Czesc! Zapraszamy w Arioal! Przed rozpoczeciem, prosimy uzupelnic Wasze konto, aby wiedzic o Was wiecej.
+                            <p:link outcome="konto.xhtml" value="Konto"/></h5>
+                    </p:card>
                     <p:card>
                         <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
                         <p:tabView dynamic="true" cache="true">
