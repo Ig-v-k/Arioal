@@ -25,7 +25,7 @@
 
                 <ui:define name="main_content">
                     <p:card>
-                        <h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>
+                        <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
                         <p:tabView dynamic="true" cache="true">
                             <p:tab title="Plan dnia">
                                 <div class="p-grid p-ai-center vertical-container">
@@ -39,13 +39,13 @@
                                                          styleClass="ui-button-primary ui-button-flat"/>
                                         <p:commandButton type="button" value="Pokaz wszystkie"
                                                          styleClass="ui-button-primary ui-button-flat"/>
-                                        <p:commandButton type="button" icon="pi pi-question"
+                                        <p:commandButton type="button" icon="pi pi-question-circle"
                                                          styleClass="rounded-button ui-button-primary ui-button-flat"/>
                                         <p:commandButton type="button" icon="pi pi-print"
                                                          styleClass="rounded-button ui-button-primary ui-button-flat"/>
                                     </div>
                                 </div>
-                                <p:divider />
+                                <p:divider/>
                                 <div class="p-grid">
                                     <div class="p-col p-d-flex p-jc-center p-ai-center">
                                         <p:outputLabel for="navigator" value="Data:" styleClass="p-mr-2"/>
@@ -56,47 +56,58 @@
                                     <div class="p-col-fixed">
                                         Dodaj:
                                         <p:commandButton type="button" value="wykonane"
-                                                         styleClass="ui-button-success ui-button-flat" icon="pi pi-plus-circle"/>
+                                                         styleClass="ui-button-success ui-button-flat"
+                                                         icon="pi pi-plus-circle"/>
                                         <p:commandButton type="button" value="planowanie"
-                                                         styleClass="ui-button-success ui-button-flat" icon="pi pi-plus-circle"/>
+                                                         styleClass="ui-button-success ui-button-flat"
+                                                         icon="pi pi-plus-circle"/>
                                     </div>
                                 </div>
-                                <p:panelGrid styleClass="p-mt-2" style="width: 100%">
-                                    <f:facet name="header">
-                                        <p:row>
-                                            <p:column styleClass="p-p-0">
-                                                <p:commandButton type="button" icon="pi pi-ellipsis-v"
-                                                                 styleClass="rounded-button ui-button-primary ui-button-flat"/>
-                                            </p:column>
-                                            <p:column>Data</p:column>
-                                            <p:column>N</p:column>
-                                            <p:column>Kategoria / Priorytet / Opis</p:column>
-                                            <p:column>Kontakt</p:column>
-                                            <p:column>Status</p:column>
-                                        </p:row>
-                                    </f:facet>
+                                <h:form id="dt_form">
+                                    <p:growl id="messages" showDetail="true"/>
+                                    <p:dataTable id="dt_actions" var="act" value="#{dtActionBean.actionList}"
+                                                 showGridlines="true" reflow="true" widgetVar="dtActionsWV"
+                                                 selection="#{dtActionBean.selectedActionList}"
+                                                 styleClass="p-mt-2" style="width: 100%" rowKey="#{act.id}"
+                                                 selectionPageOnly="false" size="small" allowUnsorting="true"
+                                                 sortMode="single" paginator="true" rows="5">
 
-                                    <p:row>
-                                        <p:column>
-                                            <p:selectBooleanCheckbox value="false"/>
-                                        </p:column>
-                                        <p:column>
-                                            '02 lip(Sr)'
-                                        </p:column>
-                                        <p:column>
-                                            <p:selectBooleanButton onLabel="" offLabel="" onIcon="pi pi-star-o" offIcon="pi pi-star"/>
-                                        </p:column>
-                                        <p:column>
-                                            <div class="d-flex">
-                                                <h6><i class="pi pi-phone"/> SMS</h6>
+                                        <f:facet name="header">
+                                            <div class="p-d-flex p-jc-between p-ai-center">
+                                                Dzialania
+                                                <div>
+                                                    <p:commandButton id="toggler" type="button" value="Kolumne"
+                                                                     icon="pi pi-align-justify"
+                                                                     styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+                                                    <p:columnToggler datasource="dt_actions" trigger="toggler"/>
+                                                </div>
                                             </div>
-                                            <p:panelGrid id="home-content-" columns="3" layout="flex" styleClass="showcase-text-align-start">
+                                        </f:facet>
+
+                                        <p:column selectionMode="multiple" style="width:25px;text-align:center"/>
+                                        <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}">
+                                            <h:outputText value="${act.date}"/>
+                                        </p:column>
+                                        <p:column headerText="N" style="width: 35px;text-align:center">
+                                            <p:selectBooleanButton onLabel="" offLabel="" onIcon="pi pi-star-o"
+                                                                   offIcon="pi pi-star" styleClass="p-d-block"/>
+                                            <p:commandButton type="button" icon="pi pi-exclamation-triangle"
+                                                             styleClass="rounded-button ui-button-secondary ui-button-flat p-d-block"/>
+                                        </p:column>
+                                        <p:column headerText="Kategoria / Priorytet / Opis">
+                                            <div class="d-flex">
+                                                <h6 class="p-m-2"><i class="pi pi-telephone p-mr-1"/><h:outputText
+                                                        value="#{act.categoryName}"/></h6>
+                                            </div>
+                                            <p:panelGrid columns="3" layout="flex"
+                                                         styleClass="showcase-text-align-start"
+                                                         columnClasses="p-col-2 p-p-1, p-col-7 p-p-1, p-col-3 p-p-1">
                                                 <h:outputText value="wyk.:"/>
-                                                <h:outputText value="Jan"/>
+                                                <h:outputText value="#{act.performerName}"/>
                                                 <div></div>
 
                                                 <h:outputText value="cele:"/>
-                                                <h:outputText value="kontakt po ofercie"/>
+                                                <h:outputText value="#{act.goalName}"/>
                                                 <div></div>
 
                                                 <h:outputText value="tresc:"/>
@@ -105,41 +116,60 @@
                                                 <div></div>
 
                                                 <h:outputText value="opis:"/>
-                                                <h:outputText value="objaśnienie "/>
+                                                <h:outputText value="#{act.describeName}"/>
                                                 <div></div>
 
                                                 <h:outputText value="info:"/>
                                                 <p:commandButton type="button" icon="pi pi-comments"
                                                                  styleClass="rounded-button ui-button-warning ui-button-flat"/>
                                                 <p:commandButton type="button" value="Wyslij"
-                                                                 styleClass="ui-button-primary ui-button-flat" icon="pi pi-envelope"/>
+                                                                 styleClass="ui-button-primary ui-button-flat"
+                                                                 icon="pi pi-envelope"/>
                                             </p:panelGrid>
                                         </p:column>
-                                    </p:row>
+                                        <p:column headerText="Kontakt">
+                                            <div class="d-flex">
+                                                <h6 class="p-m-2"><i class="pi arrow-left"/><h:outputText
+                                                        value="#{act.contactName}"/></h6>
+                                            </div>
+                                            <p:panelGrid columns="2" layout="flex"
+                                                         styleClass="showcase-text-align-end"
+                                                         columnClasses="p-col-2 p-p-1, p-col-10 p-p-1">
+                                                <i class="pi pi-envelope"/>
+                                                <p:commandLink value="email"/>
 
+                                                <i class="pi pi-mobile"/>
+                                                <h:outputText value="#{act.contactFax}"/>
 
-                                    <f:facet name="footer">
-                                        <p:row>
-                                            <p:column colspan="4" style="text-align: right">
-                                                Finals MVP
-                                            </p:column>
-                                            <p:column colspan="3" rowspan="3">
-                                                Michael Jordan (Chicago)
-                                            </p:column>
-                                        </p:row>
+                                                <h:outputText value="status:"/>
+                                                <h:outputText value="#{act.contactStatus}"/>
 
-                                        <p:row>
-                                            <p:column colspan="4" style="text-align: right">
-                                                Season MVP
-                                            </p:column>
-                                        </p:row>
-                                        <p:row>
-                                            <p:column colspan="4" style="text-align: right">
-                                                Top Scorer
-                                            </p:column>
-                                        </p:row>
-                                    </f:facet>
-                                </p:panelGrid>
+                                            </p:panelGrid>
+                                        </p:column>
+                                        <p:column headerText="Status" style="width: 45px;text-align:center">
+                                            <h:outputText rendered="#{act.actionStatus}">
+                                                <i class="pi pi-check" style="color: green"/>
+                                            </h:outputText>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                    <!-- delete context menu -->
+                                    <p:contextMenu for="dt_actions">
+                                        <p:menuitem value="Usunac" update="dt_actions" icon="pi pi-trash"
+                                                    action="#{dtActionBean.deleteSelectedActionList}"/>
+                                    </p:contextMenu>
+                                    <!-- delete confirm dialog -->
+                                    <p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
+                                                     message="Delete the product?" header="Confirm" severity="warn">
+                                        <p:commandButton value="Yes" icon="pi pi-check"
+                                                         actionListener="#{dtActionBean.deleteSelectedActionList}"
+                                                         process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
+                                        <p:commandButton value="No" type="button" styleClass="ui-button-secondary"
+                                                         icon="pi pi-times"
+                                                         onclick="PF('deleteProductDialog').hide()"/>
+                                    </p:confirmDialog>
+
+                                </h:form>
                             </p:tab>
                             <p:tab title="Zalegle">
                                 <p class="p-m-0">'Zalegle'</p>
