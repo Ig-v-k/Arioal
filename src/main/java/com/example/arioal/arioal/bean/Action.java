@@ -10,20 +10,20 @@ public class Action implements Serializable {
   private String contactEmail;
   private String contactFax;
   private String contactStatus;
-  private Category categoryName;
+  private Category category;
   private String performerName;
   private String goalName;
   private String describeName;
   private boolean actionStatus;
 
-  public Action(int id, LocalDate date, String contactName, String contactEmail, String contactFax, String contactStatus, Category categoryName, String performerName, String goalName, String describeName, boolean actionStatus) {
+  public Action(int id, LocalDate date, String contactName, String contactEmail, String contactFax, String contactStatus, Category category, String performerName, String goalName, String describeName, boolean actionStatus) {
 	this.id = id;
 	this.date = date;
 	this.contactName = contactName;
 	this.contactEmail = contactEmail;
 	this.contactFax = contactFax;
 	this.contactStatus = contactStatus;
-	this.categoryName = categoryName;
+	this.category = category;
 	this.performerName = performerName;
 	this.goalName = goalName;
 	this.describeName = describeName;
@@ -82,12 +82,12 @@ public class Action implements Serializable {
 	this.contactStatus = contactStatus;
   }
 
-  public Category getCategoryName() {
-	return categoryName;
+  public Category getCategory() {
+	return category;
   }
 
-  public void setCategoryName(Category categoryName) {
-	this.categoryName = categoryName;
+  public void setCategory(Category category) {
+	this.category = category;
   }
 
   public String getPerformerName() {

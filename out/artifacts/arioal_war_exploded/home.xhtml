@@ -109,7 +109,7 @@
                                         <p:column headerText="Kategoria / Priorytet / Opis">
                                             <div class="d-flex">
                                                 <h6 class="p-m-2"><i class="pi pi-telephone p-mr-1"/><h:outputText
-                                                        value="#{act.categoryName}"/></h6>
+                                                        value="#{act.category}"/></h6>
                                             </div>
                                             <p:panelGrid columns="3" layout="flex"
                                                          styleClass="showcase-text-align-start"
@@ -185,36 +185,76 @@
                                               modal="true" maximizable="true" responsive="true">
                                         <p:outputPanel id="manage-wykonane-content" class="ui-fluid">
                                             <p:outputPanel rendered="#{not empty dtActionBean.selectedAction}">
-                                                <div class="p-field">
-                                                    <p:outputLabel for="name">Name</p:outputLabel>
-                                                    <p:inputText id="name" value="name_val" required="true"/>
-                                                </div>
-                                                <div class="p-field">
-                                                    <p:outputLabel for="description">Description</p:outputLabel>
-                                                    <p:inputTextarea id="description" value="desc_val"/>
-                                                </div>
-                                                <div class="p-field">
-                                                    <p:outputLabel for="category">Category</p:outputLabel>
-                                                    <p:selectOneRadio id="category" value="cat_val"
-                                                                      layout="responsive" columns="2">
-                                                        <f:selectItem itemLabel="Accessories" itemValue="Accessories"/>
-                                                        <f:selectItem itemLabel="Clothing" itemValue="Clothing"/>
-                                                        <f:selectItem itemLabel="Electronics" itemValue="Electronics"/>
-                                                        <f:selectItem itemLabel="Fitness" itemValue="Fitness"/>
-                                                    </p:selectOneRadio>
-                                                </div>
-                                                <div class="p-formgrid p-grid">
-                                                    <div class="p-field p-col">
-                                                        <p:outputLabel for="price">Price</p:outputLabel>
-                                                        <p:inputNumber id="price" value="0.00"
-                                                                       symbol=" USD" symbolPosition="s"
-                                                                       decimalSeparator="." thousandSeparator=","/>
+                                                <p:fieldset legend="Dzialanie" styleClass="p-mb-4">
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_category"
+                                                                       styleClass="p-mr-3">Kategoria:</p:outputLabel>
+                                                        <p:menuButton id="na_category"
+                                                                      value="#{dtActionBean.selectedAction.category}">
+                                                            <p:menuitem value="SMS"
+                                                                        action="#{dtActionBean.categoryItem('SMS')}"
+                                                                        update="na_category"/>
+                                                            <p:menuitem value="Email"
+                                                                        action="#{dtActionBean.categoryItem('EMAIL')}"
+                                                                        update="na_category"/>
+                                                            <p:menuitem value="Telephone"
+                                                                        action="#{dtActionBean.categoryItem('TELEPHONE')}"
+                                                                        update="na_category"/>
+                                                        </p:menuButton>
                                                     </div>
-                                                    <div class="p-field p-col">
-                                                        <p:outputLabel for="quantity">Quantity</p:outputLabel>
-                                                        <p:spinner id="quantity" min="0" value="qty_val"/>
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_performer"
+                                                                       styleClass="p-mr-3">Osoba:</p:outputLabel>
+                                                        <p:menuButton id="na_performer"
+                                                                      value="#{dtActionBean.selectedAction.performerName}">
+                                                            <p:menuitem value="Igor"
+                                                                        action="#{dtActionBean.performerItem('Igor')}"
+                                                                        update="na_performer"/>
+                                                            <p:menuitem value="Vladimir"
+                                                                        action="#{dtActionBean.performerItem('Vladimir')}"
+                                                                        update="na_performer"/>
+                                                        </p:menuButton>
                                                     </div>
-                                                </div>
+                                                </p:fieldset>
+                                                <p:fieldset legend="Kontakt" styleClass="p-mb-4">
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_ctc_name">Nazwa:</p:outputLabel>
+                                                        <p:inputText id="na_ctc_name"
+                                                                     value="#{dtActionBean.selectedAction.contactName}"/>
+                                                    </div>
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_ctc_email">Email:</p:outputLabel>
+                                                        <p:inputText id="na_ctc_email"
+                                                                     value="#{dtActionBean.selectedAction.contactEmail}"/>
+                                                    </div>
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_ctc_fax">Fax:</p:outputLabel>
+                                                        <p:inputText id="na_ctc_fax"
+                                                                     value="#{dtActionBean.selectedAction.contactFax}"/>
+                                                    </div>
+                                                    <div class="p-field">
+                                                        <p:outputLabel for="na_ctc_status"
+                                                                       styleClass="p-mr-3">Status:</p:outputLabel>
+                                                        <p:menuButton id="na_ctc_status"
+                                                                      value="#{dtActionBean.selectedAction.contactStatus}">
+                                                            <p:menuitem value="szansa"
+                                                                        action="#{dtActionBean.contactStatus('szansa')}"
+                                                                        update="na_ctc_status"/>
+                                                            <p:menuitem value="aktywny"
+                                                                        action="#{dtActionBean.contactStatus('aktywny')}"
+                                                                        update="na_ctc_status"/>
+                                                            <p:menuitem value="nieaktywny"
+                                                                        action="#{dtActionBean.contactStatus('nieaktywny')}"
+                                                                        update="na_ctc_status"/>
+                                                            <p:menuitem value="rezygnacja"
+                                                                        action="#{dtActionBean.contactStatus('rezygnacja')}"
+                                                                        update="na_ctc_status"/>
+                                                            <p:menuitem value="jednorazowy"
+                                                                        action="#{dtActionBean.contactStatus('jednorazowy')}"
+                                                                        update="na_ctc_status"/>
+                                                        </p:menuButton>
+                                                    </div>
+                                                </p:fieldset>
                                             </p:outputPanel>
                                         </p:outputPanel>
                                         <f:facet name="footer">

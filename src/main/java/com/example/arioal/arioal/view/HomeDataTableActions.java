@@ -1,6 +1,7 @@
 package com.example.arioal.arioal.view;
 
 import com.example.arioal.arioal.bean.Action;
+import com.example.arioal.arioal.bean.Category;
 import com.example.arioal.arioal.service.ActionService;
 
 import javax.annotation.PostConstruct;
@@ -23,39 +24,55 @@ public class HomeDataTableActions implements Serializable {
 
   @PostConstruct
   public void init() {
-    actionList = actionService.getAll();
+	actionList = actionService.getAllBySize(3);
+  }
+
+  public void categoryItem(final String category) {
+	selectedAction.setCategory(Category.valueOf(category));
+  }
+
+  public void performerItem(final String performerName) {
+	selectedAction.setPerformerName(performerName);
+  }
+
+  public void contactStatus(final String status) {
+	selectedAction.setContactStatus(status);
+  }
+
+  public void saveAction() {
+
   }
 
   public void openNew() {
-    selectedAction = new Action();
+	selectedAction = new Action();
   }
 
   public void deleteSelectedActionList() {
-    actionList.removeAll(selectedActionList);
-    selectedActionList = Collections.emptyList();
+	actionList.removeAll(selectedActionList);
+	selectedActionList = Collections.emptyList();
   }
 
   public List<Action> getActionList() {
-    return actionList;
+	return actionList;
   }
 
   public void setActionList(List<Action> actionList) {
-    this.actionList = actionList;
+	this.actionList = actionList;
   }
 
   public List<Action> getSelectedActionList() {
-    return selectedActionList;
+	return selectedActionList;
   }
 
   public void setSelectedActionList(List<Action> selectedActionList) {
-    this.selectedActionList = selectedActionList;
+	this.selectedActionList = selectedActionList;
   }
 
   public Action getSelectedAction() {
-    return selectedAction;
+	return selectedAction;
   }
 
   public void setSelectedAction(Action selectedAction) {
-    this.selectedAction = selectedAction;
+	this.selectedAction = selectedAction;
   }
 }
