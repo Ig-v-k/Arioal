@@ -33,27 +33,27 @@
                     </p:card>
                     <p:card>
                         <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
-                        <p:tabView dynamic="true" cache="true">
-                            <p:tab title="Plan dnia">
+                        <p:tabView id="tabsAction" dynamic="true" cache="true">
+                            <p:tab id="plane_day" title="Plan dnia">
                                 <div class="p-grid p-ai-center vertical-container">
                                     <div class="p-col">
                                         <h5>Plan dnia</h5>
                                     </div>
                                     <div class="p-col-fixed">
                                         <p:button type="button" value="Powieksz"
-                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                                  styleClass="ui-button-primary ui-button-flat"/>
                                         <p:button type="button" value="Odswiez"
-                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                                  styleClass="ui-button-primary ui-button-flat"/>
                                         <p:button type="button" value="Pokaz wszystkie"
-                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                                  styleClass="ui-button-primary ui-button-flat"/>
                                         <p:button type="button" icon="pi pi-question-circle"
-                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                                  styleClass="rounded-button ui-button-primary ui-button-flat"/>
                                         <p:button type="button" icon="pi pi-print"
-                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                                  styleClass="rounded-button ui-button-primary ui-button-flat"/>
                                     </div>
                                 </div>
                                 <p:divider/>
-                                <h:form id="dt_form">
+                                <h:form id="formAction">
                                     <div class="p-grid">
                                         <div class="p-col p-d-flex p-jc-center p-ai-center">
                                             <p:outputLabel for="navigator" value="Data:" styleClass="p-mr-2"/>
@@ -76,8 +76,8 @@
                                                              icon="pi pi-plus-circle"/>
                                         </div>
                                     </div>
-                                    <p:growl id="messages" showDetail="true"/>
-                                    <p:dataTable id="dt_actions" var="act" value="#{dtActionBean.actionList}"
+                                    <p:growl id="home_act_messages" showDetail="true"/>
+                                    <p:dataTable id="dataTableActions" var="act" value="#{dtActionBean.actionList}"
                                                  showGridlines="true" reflow="true" widgetVar="dtActionsWV"
                                                  selection="#{dtActionBean.selectedActionList}"
                                                  styleClass="p-mt-2" style="width: 100%" rowKey="#{act.id}"
@@ -91,7 +91,7 @@
                                                     <p:commandButton id="toggler" type="button" value="Kolumne"
                                                                      icon="pi pi-align-justify"
                                                                      styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
-                                                    <p:columnToggler datasource="dt_actions" trigger="toggler"/>
+                                                    <p:columnToggler datasource="dataTableActions" trigger="toggler"/>
                                                 </div>
                                             </div>
                                         </f:facet>
@@ -165,8 +165,8 @@
 
                                     </p:dataTable>
                                     <!-- delete context menu -->
-                                    <p:contextMenu for="dt_actions">
-                                        <p:menuitem value="Usunac" update="dt_actions" icon="pi pi-trash"
+                                    <p:contextMenu for="dataTableActions">
+                                        <p:menuitem value="Usunac" update="dataTableActions" icon="pi pi-trash"
                                                     action="#{dtActionBean.deleteSelectedActionList}">
                                             <p:confirm header="Podtwierdzenie"
                                                        message="Czy na pewno checie usunac dane?"

@@ -14,7 +14,6 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 @Named("dtActionBean")
 @ViewScoped
@@ -44,18 +43,17 @@ public class HomeDataTableActions implements Serializable {
   }
 
   public void saveAction() {
-	if (this.selectedAction.getId() == 0) {
+	if (selectedAction.getId() == null) {
 	  final int idLastElem = actionList.get(actionList.size() - 1).getId();
-	  selectedAction.setId(idLastElem+1);
+	  selectedAction.setId(idLastElem + 1);
 	  actionList.add(selectedAction);
 	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
-	}
-	else {
+	} else {
 	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
 	}
 
 	PrimeFaces.current().executeScript("PF('dlg2').hide()");
-	PrimeFaces.current().ajax().update("messages", "dt_actions");
+	PrimeFaces.current().ajax().update("tabsAction:formAction:home_act_messages", "tabsAction:formAction:dataTableActions");
   }
 
   public void openNew() {
