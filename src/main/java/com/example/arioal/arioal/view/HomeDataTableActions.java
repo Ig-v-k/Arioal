@@ -34,7 +34,7 @@ public class HomeDataTableActions implements Serializable {
 
   @PostConstruct
   public void init() {
-	actionList = actionService.getAllBySize(3);
+	actionList = actionService.getAllBySize(15);
   }
 
   public void goalInit(final String goal) {

@@ -81,12 +81,18 @@
                                     </div>
                                     <p:growl id="home_act_messages" showDetail="true"/>
                                     <p:dataTable id="dataTableActions" var="act" value="#{dtActionBean.actionList}"
+                                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                                 rowsPerPageTemplate="5,10,15"
                                                  showGridlines="true" reflow="true" widgetVar="dtActionsWV"
                                                  selection="#{dtActionBean.selectedActionList}"
                                                  styleClass="p-mt-2" style="width: 100%" rowKey="#{act.id}"
                                                  selectionPageOnly="false" size="small" allowUnsorting="true"
                                                  sortMode="single" paginator="true" rows="5"
                                                  filteredValue="#{dtActionBean.filteredActionList}">
+<!--                                    // ROW SELECTED
+                                        <p:ajax event="rowSelect" listener="#{dtActionBean.onRowSelect}" update=":form:customerDetail"
+                                                oncomplete="PF('customerDialog').show()"/>
+-->
 
                                         <f:facet name="header">
                                             <div class="p-d-flex p-jc-between p-ai-center">
@@ -100,12 +106,14 @@
                                             </div>
                                         </f:facet>
 
-                                        <p:column selectionMode="multiple" style="width:25px;text-align:center" exportable="false"/>
+                                        <p:column selectionMode="multiple" style="width:25px;text-align:center"
+                                                  exportable="false"/>
                                         <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}"
                                                   field="date">
                                             <h:outputText value="${act.date}"/>
                                         </p:column>
-                                        <p:column headerText="N" style="width: 35px;text-align:center" exportable="false">
+                                        <p:column headerText="N" style="width: 35px;text-align:center"
+                                                  exportable="false">
                                             <p:selectBooleanButton onLabel="" offLabel="" onIcon="pi pi-star-o"
                                                                    offIcon="pi pi-star" styleClass="p-d-block"/>
                                             <p:commandButton type="button" icon="pi pi-exclamation-triangle"
@@ -163,7 +171,8 @@
 
                                             </p:panelGrid>
                                         </p:column>
-                                        <p:column headerText="Status" style="width: 65px;text-align:center" exportable="false">
+                                        <p:column headerText="Status" style="width: 65px;text-align:center"
+                                                  exportable="false">
                                             <p:button rendered="#{act.actionStatus}" icon="pi pi-check"
                                                       styleClass="rounded-button ui-button-success ui-button-flat"/>
                                         </p:column>
