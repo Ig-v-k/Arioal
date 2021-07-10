@@ -3,11 +3,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
->
+      xmlns:h="http://java.sun.com/jsf/html">
     <body>
         <ui:composition>
-            <div id="footer-content" class="p-grid nested-grid">
+            <div id="footer-content" class="p-grid nested-grid" style="color: slategrey">
                 <div class="p-col-7">
                     <div class="p-grid">
                         <div class="p-col-4">
@@ -48,16 +47,19 @@
                         <p:card>
                             <div class="p-d-flex p-flex-wrap">
                                 <div class="p-field p-d-flex p-mr-2">
-                                    <p:inputText placeholder="Imie i nazwisko" required="true" requiredMessage="To pole jest obowiazkowe"/>
+                                    <p:inputText placeholder="Imie i nazwisko" required="true"
+                                                 requiredMessage="To pole jest obowiazkowe"/>
                                 </div>
                                 <div class="p-field p-d-flex p-mr-2">
                                     <p:inputText placeholder="Nazwa firmy"/>
                                 </div>
                                 <div class="p-field p-d-flex p-mr-2">
-                                    <p:inputText placeholder="Adres email" required="true" requiredMessage="To pole jest obowiazkowe"/>
+                                    <p:inputText placeholder="Adres email" required="true"
+                                                 requiredMessage="To pole jest obowiazkowe"/>
                                 </div>
                             </div>
-                            <p:commandButton type="button" value="Wyslij" styleClass="ui-button-raised" action="#{layoutView.sendMessage}"/>
+                            <p:commandButton type="button" value="Wyslij" styleClass="ui-button-raised"
+                                             action="#{layoutView.sendMessage}"/>
 
                         </p:card>
                     </h:form>
