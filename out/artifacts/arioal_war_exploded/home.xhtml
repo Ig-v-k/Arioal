@@ -35,25 +35,25 @@
                         <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
                         <p:tabView dynamic="true" cache="true">
                             <p:tab title="Plan dnia">
-                                <h:form id="dt_form">
-                                    <div class="p-grid p-ai-center vertical-container">
-                                        <div class="p-col">
-                                            <h5>Plan dnia</h5>
-                                        </div>
-                                        <div class="p-col-fixed">
-                                            <p:commandButton type="button" value="Powieksz"
-                                                             styleClass="ui-button-primary ui-button-flat"/>
-                                            <p:commandButton type="button" value="Odswiez"
-                                                             styleClass="ui-button-primary ui-button-flat"/>
-                                            <p:commandButton type="button" value="Pokaz wszystkie"
-                                                             styleClass="ui-button-primary ui-button-flat"/>
-                                            <p:commandButton type="button" icon="pi pi-question-circle"
-                                                             styleClass="rounded-button ui-button-primary ui-button-flat"/>
-                                            <p:commandButton type="button" icon="pi pi-print"
-                                                             styleClass="rounded-button ui-button-primary ui-button-flat"/>
-                                        </div>
+                                <div class="p-grid p-ai-center vertical-container">
+                                    <div class="p-col">
+                                        <h5>Plan dnia</h5>
                                     </div>
-                                    <p:divider/>
+                                    <div class="p-col-fixed">
+                                        <p:commandButton type="button" value="Powieksz"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" value="Odswiez"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" value="Pokaz wszystkie"
+                                                         styleClass="ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" icon="pi pi-question-circle"
+                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                        <p:commandButton type="button" icon="pi pi-print"
+                                                         styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                    </div>
+                                </div>
+                                <p:divider/>
+                                <h:form id="dt_form">
                                     <div class="p-grid">
                                         <div class="p-col p-d-flex p-jc-center p-ai-center">
                                             <p:outputLabel for="navigator" value="Data:" styleClass="p-mr-2"/>
@@ -259,7 +259,7 @@
                                         </p:outputPanel>
                                         <f:facet name="footer">
                                             <p:commandButton value="Zapisz" icon="pi pi-check"
-                                                             actionListener="#{dtActionBean.saveProduct}"
+                                                             actionListener="#{dtActionBean.saveAction}"
                                                              update="manage-wykonane-content"
                                                              process="manage-wykonane-content @this"/>
                                             <p:commandButton value="Zamknij" icon="pi pi-times"

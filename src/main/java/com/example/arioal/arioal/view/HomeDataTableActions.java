@@ -3,14 +3,18 @@ package com.example.arioal.arioal.view;
 import com.example.arioal.arioal.bean.Action;
 import com.example.arioal.arioal.bean.Category;
 import com.example.arioal.arioal.service.ActionService;
+import org.primefaces.PrimeFaces;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Named("dtActionBean")
 @ViewScoped
@@ -40,7 +44,18 @@ public class HomeDataTableActions implements Serializable {
   }
 
   public void saveAction() {
+	if (this.selectedAction.getId() == 0) {
+	  final int idLastElem = actionList.get(actionList.size() - 1).getId();
+	  selectedAction.setId(idLastElem+1);
+	  actionList.add(selectedAction);
+	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
+	}
+	else {
+	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+	}
 
+	PrimeFaces.current().executeScript("PF('dlg2').hide()");
+	PrimeFaces.current().ajax().update("messages", "dt_actions");
   }
 
   public void openNew() {
