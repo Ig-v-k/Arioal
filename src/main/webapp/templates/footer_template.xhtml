@@ -31,7 +31,12 @@
                                 <div class="p-mb-3">Email: biuro@crmvision.pl</div>
                             </div>
                         </div>
-                        <div class="p-col-4"></div>
+                        <div class="p-col-4">
+                            <div class="p-d-flex p-flex-column">
+                                <h5 class="p-mb-3">Id klienta</h5>
+                                <div class="p-mb-3">basicdemo</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="p-col-5">
@@ -41,18 +46,19 @@
                     </div>
                     <h:form>
                         <p:card>
-                            <div class="p-d-flex">
-                                <div class="p-field p-d-inline-flex p-mr-2">
+                            <div class="p-d-flex p-flex-wrap">
+                                <div class="p-field p-d-flex p-mr-2">
                                     <p:inputText placeholder="Imie i nazwisko" required="true" requiredMessage="To pole jest obowiazkowe"/>
                                 </div>
-                                <div class="p-field p-d-inline-flex p-mr-2">
+                                <div class="p-field p-d-flex p-mr-2">
                                     <p:inputText placeholder="Nazwa firmy"/>
                                 </div>
-                                <div class="p-field p-d-inline-flex p-mr-2">
+                                <div class="p-field p-d-flex p-mr-2">
                                     <p:inputText placeholder="Adres email" required="true" requiredMessage="To pole jest obowiazkowe"/>
                                 </div>
-                                <p:commandButton value="#{layoutView.}"/>
                             </div>
+                            <p:commandButton type="button" value="Wyslij" styleClass="ui-button-raised" action="#{layoutView.sendMessage}"/>
+
                         </p:card>
                     </h:form>
                 </div>

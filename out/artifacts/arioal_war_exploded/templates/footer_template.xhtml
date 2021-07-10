@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
 >
     <body>
         <ui:composition>
@@ -30,10 +31,37 @@
                                 <div class="p-mb-3">Email: biuro@crmvision.pl</div>
                             </div>
                         </div>
-                        <div class="p-col-4"></div>
+                        <div class="p-col-4">
+                            <div class="p-d-flex p-flex-column">
+                                <h5 class="p-mb-3">Id klienta</h5>
+                                <div class="p-mb-3">basicdemo</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-col-5"></div>
+                <div class="p-col-5">
+                    <div class="p-mb-2">
+                        <h5 class="p-mb-3">Kontakt</h5>
+                        <span>Jesteś zainteresowany lub potrzebujesz pomocy? Skontaktujemy się z Tobą!</span>
+                    </div>
+                    <h:form>
+                        <p:card>
+                            <div class="p-d-flex p-flex-wrap">
+                                <div class="p-field p-d-flex p-mr-2">
+                                    <p:inputText placeholder="Imie i nazwisko" required="true" requiredMessage="To pole jest obowiazkowe"/>
+                                </div>
+                                <div class="p-field p-d-flex p-mr-2">
+                                    <p:inputText placeholder="Nazwa firmy"/>
+                                </div>
+                                <div class="p-field p-d-flex p-mr-2">
+                                    <p:inputText placeholder="Adres email" required="true" requiredMessage="To pole jest obowiazkowe"/>
+                                </div>
+                            </div>
+                            <p:commandButton type="button" value="Wyslij" styleClass="ui-button-raised" action="#{layoutView.sendMessage}"/>
+
+                        </p:card>
+                    </h:form>
+                </div>
                 <div class="p-col-12">
                     <span><strong>Arioal</strong> - "crm" service. <p:link value="Source code"
                                                                            href="https://github.com/Ig-v-k/Arioal"/></span>
