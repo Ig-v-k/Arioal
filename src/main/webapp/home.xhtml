@@ -81,8 +81,10 @@
                                     </div>
                                     <p:growl id="home_act_messages" showDetail="true"/>
                                     <p:dataTable id="dataTableActions" var="act" value="#{dtActionBean.actionList}"
+                                                 stickyHeader="true"
                                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                                 rowsPerPageTemplate="5,10,15"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                                 rowsPerPageTemplate="5,10,{ShowAll|'Wszystkie'}"
                                                  showGridlines="true" reflow="true" widgetVar="dtActionsWV"
                                                  selection="#{dtActionBean.selectedActionList}"
                                                  styleClass="p-mt-2" style="width: 100%" rowKey="#{act.id}"
