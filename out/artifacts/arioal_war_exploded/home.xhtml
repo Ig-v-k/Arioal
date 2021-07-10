@@ -35,25 +35,28 @@
                         <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
                         <p:tabView id="tabsAction" dynamic="true" cache="true">
                             <p:tab id="plane_day" title="Plan dnia">
-                                <div class="p-grid p-ai-center vertical-container">
-                                    <div class="p-col">
-                                        <h5>Plan dnia</h5>
-                                    </div>
-                                    <div class="p-col-fixed">
-                                        <p:button type="button" value="Powieksz"
-                                                  styleClass="ui-button-primary ui-button-flat"/>
-                                        <p:button type="button" value="Odswiez"
-                                                  styleClass="ui-button-primary ui-button-flat"/>
-                                        <p:button type="button" value="Pokaz wszystkie"
-                                                  styleClass="ui-button-primary ui-button-flat"/>
-                                        <p:button type="button" icon="pi pi-question-circle"
-                                                  styleClass="rounded-button ui-button-primary ui-button-flat"/>
-                                        <p:button type="button" icon="pi pi-print"
-                                                  styleClass="rounded-button ui-button-primary ui-button-flat"/>
-                                    </div>
-                                </div>
-                                <p:divider/>
                                 <h:form id="formAction">
+                                    <div class="p-grid p-ai-center vertical-container">
+                                        <div class="p-col">
+                                            <h5>Plan dnia</h5>
+                                        </div>
+                                        <div class="p-col-fixed">
+                                            <p:button type="button" value="Powieksz"
+                                                      styleClass="ui-button-primary ui-button-flat"/>
+                                            <p:button type="button" value="Odswiez"
+                                                      styleClass="ui-button-primary ui-button-flat"/>
+                                            <p:button type="button" value="Pokaz wszystkie"
+                                                      styleClass="ui-button-primary ui-button-flat"/>
+                                            <p:button type="button" icon="pi pi-question-circle"
+                                                      styleClass="rounded-button ui-button-primary ui-button-flat"/>
+                                            <p:commandButton icon="pi pi-print" ajax="false"
+                                                             styleClass="rounded-button ui-button-primary ui-button-flat">
+                                                <p:dataExporter target="dataTableActions" type="pdf"
+                                                                fileName="pdf_tableActions" encoding="UTF-8"/>
+                                            </p:commandButton>
+                                        </div>
+                                    </div>
+                                    <p:divider/>
                                     <div class="p-grid">
                                         <div class="p-col p-d-flex p-jc-center p-ai-center">
                                             <p:outputLabel for="navigator" value="Data:" styleClass="p-mr-2"/>
@@ -98,7 +101,8 @@
                                         </f:facet>
 
                                         <p:column selectionMode="multiple" style="width:25px;text-align:center"/>
-                                        <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}" field="date">
+                                        <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}"
+                                                  field="date">
                                             <h:outputText value="${act.date}"/>
                                         </p:column>
                                         <p:column headerText="N" style="width: 35px;text-align:center" field="n">
@@ -159,9 +163,14 @@
 
                                             </p:panelGrid>
                                         </p:column>
-                                        <p:column headerText="Status" style="width: 65px;text-align:center" field="status">
+                                        <p:column headerText="Status" style="width: 65px;text-align:center"
+                                                  field="status">
                                             <p:button rendered="#{act.actionStatus}" icon="pi pi-check"
                                                       styleClass="rounded-button ui-button-success ui-button-flat"/>
+                                        </p:column>
+                                        <p:column style="width:30px">
+                                            <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit"
+                                                         saveTitle="Save Row"/>
                                         </p:column>
 
                                     </p:dataTable>
