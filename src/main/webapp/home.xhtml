@@ -82,7 +82,8 @@
                                                  selection="#{dtActionBean.selectedActionList}"
                                                  styleClass="p-mt-2" style="width: 100%" rowKey="#{act.id}"
                                                  selectionPageOnly="false" size="small" allowUnsorting="true"
-                                                 sortMode="single" paginator="true" rows="5">
+                                                 sortMode="single" paginator="true" rows="5"
+                                                 filteredValue="#{dtActionBean.filteredActionList}">
 
                                         <f:facet name="header">
                                             <div class="p-d-flex p-jc-between p-ai-center">
@@ -97,16 +98,16 @@
                                         </f:facet>
 
                                         <p:column selectionMode="multiple" style="width:25px;text-align:center"/>
-                                        <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}">
+                                        <p:column headerText="Data" style="width: 70px" sortBy="#{act.date}" field="date">
                                             <h:outputText value="${act.date}"/>
                                         </p:column>
-                                        <p:column headerText="N" style="width: 35px;text-align:center">
+                                        <p:column headerText="N" style="width: 35px;text-align:center" field="n">
                                             <p:selectBooleanButton onLabel="" offLabel="" onIcon="pi pi-star-o"
                                                                    offIcon="pi pi-star" styleClass="p-d-block"/>
                                             <p:commandButton type="button" icon="pi pi-exclamation-triangle"
                                                              styleClass="rounded-button ui-button-secondary ui-button-flat p-d-block"/>
                                         </p:column>
-                                        <p:column headerText="Kategoria / Priorytet / Opis">
+                                        <p:column headerText="Kategoria / Priorytet / Opis" field="describe">
                                             <div class="d-flex">
                                                 <h6 class="p-m-2"><i class="pi pi-telephone p-mr-1"/><h:outputText
                                                         value="#{act.category}"/></h6>
@@ -139,7 +140,7 @@
                                                                  icon="pi pi-envelope"/>
                                             </p:panelGrid>
                                         </p:column>
-                                        <p:column headerText="Kontakt">
+                                        <p:column headerText="Kontakt" field="contact">
                                             <div class="d-flex">
                                                 <h6 class="p-m-2"><i class="pi arrow-left"/><h:outputText
                                                         value="#{act.contactName}"/></h6>
@@ -158,7 +159,7 @@
 
                                             </p:panelGrid>
                                         </p:column>
-                                        <p:column headerText="Status" style="width: 45px;text-align:center">
+                                        <p:column headerText="Status" style="width: 65px;text-align:center" field="status">
                                             <p:button rendered="#{act.actionStatus}" icon="pi pi-check"
                                                       styleClass="rounded-button ui-button-success ui-button-flat"/>
                                         </p:column>
@@ -190,7 +191,9 @@
                                                         <div class="p-field p-d-flex p-jc-end p-ai-center">
                                                             <p:outputLabel for="actionStatus"
                                                                            styleClass="p-mr-3">Status:</p:outputLabel>
-                                                            <p:selectOneRadio id="actionStatus" value="#{dtActionBean.actionStatus}" unselectable="true">
+                                                            <p:selectOneRadio id="actionStatus"
+                                                                              value="#{dtActionBean.actionStatus}"
+                                                                              unselectable="true">
                                                                 <f:selectItem itemLabel="zakonczone" itemValue="true"/>
                                                                 <f:selectItem itemLabel="anulowane" itemValue="false"/>
                                                             </p:selectOneRadio>
@@ -234,17 +237,20 @@
                                                             <div class="p-col-12">
                                                                 <p:fieldset legend="Kontakt" styleClass="p-mb-4">
                                                                     <div class="p-field">
-                                                                        <p:outputLabel for="na_ctc_name">Nazwa:</p:outputLabel>
+                                                                        <p:outputLabel
+                                                                                for="na_ctc_name">Nazwa:</p:outputLabel>
                                                                         <p:inputText id="na_ctc_name"
                                                                                      value="#{dtActionBean.selectedAction.contactName}"/>
                                                                     </div>
                                                                     <div class="p-field">
-                                                                        <p:outputLabel for="na_ctc_email">Email:</p:outputLabel>
+                                                                        <p:outputLabel
+                                                                                for="na_ctc_email">Email:</p:outputLabel>
                                                                         <p:inputText id="na_ctc_email"
                                                                                      value="#{dtActionBean.selectedAction.contactEmail}"/>
                                                                     </div>
                                                                     <div class="p-field">
-                                                                        <p:outputLabel for="na_ctc_fax">Fax:</p:outputLabel>
+                                                                        <p:outputLabel
+                                                                                for="na_ctc_fax">Fax:</p:outputLabel>
                                                                         <p:inputText id="na_ctc_fax"
                                                                                      value="#{dtActionBean.selectedAction.contactFax}"/>
                                                                     </div>
@@ -275,9 +281,14 @@
                                                             <div class="p-col-12">
                                                                 <p:fieldset legend="Data" styleClass="p-mb-4">
                                                                     <div class="p-field">
-                                                                        <p:outputLabel for="time7" value="Time (with timeInput)"/>
-                                                                        <p:datePicker id="time7" value="#{dtActionBean.selectedAction.date}" timeInput="true">
-                                                                            <p:ajax event="dateSelect" listener="#{dtActionBean.dateInit}" pattern="yyyy-MMM-dd"/>
+                                                                        <p:outputLabel for="time7"
+                                                                                       value="Time (with timeInput)"/>
+                                                                        <p:datePicker id="time7"
+                                                                                      value="#{dtActionBean.selectedAction.date}"
+                                                                                      timeInput="true">
+                                                                            <p:ajax event="dateSelect"
+                                                                                    listener="#{dtActionBean.dateInit}"
+                                                                                    pattern="yyyy-MMM-dd"/>
                                                                         </p:datePicker>
                                                                     </div>
                                                                 </p:fieldset>
@@ -317,7 +328,8 @@
                                                         <div class="p-grid">
                                                             <div class="p-col-12">
                                                                 <p:fieldset legend="Opis">
-                                                                    <p:inputTextarea rows="4" maxlength="300" value="#{dtActionBean.selectedAction.describeName}"/>
+                                                                    <p:inputTextarea rows="4" maxlength="300"
+                                                                                     value="#{dtActionBean.selectedAction.describeName}"/>
                                                                 </p:fieldset>
                                                             </div>
                                                         </div>

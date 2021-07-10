@@ -22,6 +22,7 @@ import java.util.List;
 public class HomeDataTableActions implements Serializable {
   private List<Action> actionList;
   private List<Action> selectedActionList;
+  private List<Action> filteredActionList;
   private Action selectedAction;
   private String actionStatus = "false";
 
@@ -110,5 +111,13 @@ public class HomeDataTableActions implements Serializable {
 
   public void setActionStatus(String actionStatus) {
 	this.actionStatus = actionStatus;
+  }
+
+  public List<Action> getFilteredActionList() {
+	return filteredActionList;
+  }
+
+  public void setFilteredActionList(List<Action> filteredActionList) {
+	this.filteredActionList = filteredActionList;
   }
 }
