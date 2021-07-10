@@ -4,6 +4,7 @@ import com.example.arioal.arioal.bean.Action;
 import com.example.arioal.arioal.bean.Category;
 import com.example.arioal.arioal.service.ActionService;
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -12,6 +13,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,13 +23,25 @@ public class HomeDataTableActions implements Serializable {
   private List<Action> actionList;
   private List<Action> selectedActionList;
   private Action selectedAction;
+  private String actionStatus = "false";
 
   @Inject
   private ActionService actionService;
 
+  public HomeDataTableActions() {
+  }
+
   @PostConstruct
   public void init() {
 	actionList = actionService.getAllBySize(3);
+  }
+
+  public void goalInit(final String goal) {
+    selectedAction.setGoalName(goal);
+  }
+
+  public void dateInit(SelectEvent<LocalDate> event) {
+    selectedAction.setDate(event.getObject());
   }
 
   public void categoryItem(final String category) {
@@ -46,6 +60,7 @@ public class HomeDataTableActions implements Serializable {
 	if (selectedAction.getId() == null) {
 	  final int idLastElem = actionList.get(actionList.size() - 1).getId();
 	  selectedAction.setId(idLastElem + 1);
+	  selectedAction.setActionStatus(Boolean.parseBoolean(actionStatus));
 	  actionList.add(selectedAction);
 	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
 	} else {
@@ -87,5 +102,13 @@ public class HomeDataTableActions implements Serializable {
 
   public void setSelectedAction(Action selectedAction) {
 	this.selectedAction = selectedAction;
+  }
+
+  public String getActionStatus() {
+	return actionStatus;
+  }
+
+  public void setActionStatus(String actionStatus) {
+	this.actionStatus = actionStatus;
   }
 }
