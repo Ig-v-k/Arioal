@@ -35,7 +35,7 @@
         <display-name>Admin Role</display-name>
         <web-resource-collection>
             <web-resource-name>All App Pages</web-resource-name>
-            <url-pattern>/arioal/*</url-pattern>
+            <url-pattern>/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -47,7 +47,7 @@
         <display-name>User Role</display-name>
         <web-resource-collection>
             <web-resource-name>Profile Page</web-resource-name>
-            <url-pattern>/arioal/home.xhtml</url-pattern>
+            <url-pattern>/home.xhtml</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>

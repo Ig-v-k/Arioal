@@ -82,6 +82,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
         </dependency>
+        <!-- security context -->
     </dependencies>
 
     <profiles>
@@ -115,19 +116,22 @@
                         <resource>
                             <directory>src/main/webapp</directory>
                             <filtering>true</filtering>
-                        </resource>
-                    </webResources>
-<!--
-                    <webResources>
-                        <resource>
-                            <filtering>true</filtering>
-                            <directory>src/main/webapp</directory>
                             <includes>
                                 <include>**/web.xml</include>
                             </includes>
                         </resource>
                     </webResources>
--->
+                    <!--
+                                        <webResources>
+                                            <resource>
+                                                <filtering>true</filtering>
+                                                <directory>src/main/webapp</directory>
+                                                <includes>
+                                                    <include>**/web.xml</include>
+                                                </includes>
+                                            </resource>
+                                        </webResources>
+                    -->
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                 </configuration>
