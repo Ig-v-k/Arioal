@@ -13,6 +13,7 @@ import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -20,6 +21,7 @@ import java.io.Serializable;
 @RequestScoped
 public class LoginController implements Serializable {
   @NotEmpty
+//  @Size(min = 3, message = "Login musi zawierac wiecej niz 3 symboli")
   private String username;
   @NotEmpty
   private String password;
@@ -38,7 +40,7 @@ public class LoginController implements Serializable {
 		break;
 	  case SEND_FAILURE:
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Credentials", null));
-		status = "Dane sa nieprawidlowe";
+		status = "Dane sa nieprawidlowe, sprobuj ponownie";
 		break;
 	  case SUCCESS:
 		getExternalContext().redirect(getExternalContext().getRequestContextPath() + "/home.xhtml");

@@ -2,11 +2,26 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <title>Konto</title>
-    </head>
-    <body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
+    <f:view>
+        <h:head>
+            <title>Konto | Arioal</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
+            <link rel="shortcut icon" type="image/x-icon" href="resources/images/arioallogo.png"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        </h:head>
 
-    </body>
+        <h:body style="background-color: whitesmoke; height: 100%">
+            <p:tooltip/>
+            <div class="d-center" style="height: 100%">
+                <h:outputText value="#{p:userPrincipal().name}"/>
+                <p:card style="width: 350px; margin: 0">
+                    Main content prodile page
+                </p:card>
+            </div>
+        </h:body>
+    </f:view>
 </html>

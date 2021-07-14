@@ -7,13 +7,14 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <f:view>
         <h:head>
-            <title>Arioal | Login</title>
+            <title>Login | Arioal</title>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
             <link rel="shortcut icon" type="image/x-icon" href="resources/images/arioallogo.png"/>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         </h:head>
         <h:body style="background-color: whitesmoke; height: 100%">
+            <p:tooltip/>
             <div class="d-center" style="height: 100%">
                 <p:card style="width: 350px; margin: 0">
                     <f:facet name="title">
@@ -22,38 +23,44 @@
                         Login
                     </f:facet>
                     <f:facet name="subtitle">
-                        Prosimy autoryzowac sie.
+                        Prosimy autoryzowac sie. <i class="pi pi-info-circle"
+                                                    title="1.Admin: vladimir, vladimirpass 2.User: igor, igorpass"/>
                     </f:facet>
 
                     <h:form id="login-form">
-                        <div class="ui-fluid" style="padding: 20px 0">
-                            <div class="p-field" style="margin-bottom: 10px">
+                        <div id="login-content_container">
+                            <div class="ui-fluid" style="padding: 20px 0">
+                                <div class="p-field" style="margin-bottom: 10px">
                                 <span class="ui-float-label">
-                                    <p:inputText id="username_login" styleClass="p-d-block" title="Username"
+                                    <p:inputText id="username_login" styleClass="p-d-block" title="Login"
                                                  value="#{loginController.username}"
-                                                 requiredMessage="Username jest wymagane" maxlength="30"
+                                                 requiredMessage="Login jest wymagany" maxlength="30"
                                                  type="username" required="true"/>
                                     <p:outputLabel for="@previous" value="Username:"/>
                                     <p:message for="username_login"/>
                                 </span>
-                            </div>
+                                </div>
 
-                            <div class="p-field">
+                                <div class="p-field">
                                 <span class="ui-float-label">
-                                    <p:password id="password_login" value="#{loginController.password}" toggleMask="true"
-                                                redisplay="true" style="width: 100%" requiredMessage="Password jest wymagane"/>
-                                    <p:outputLabel for="@previous" value="Password:"/>
+                                    <p:password id="password_login" value="#{loginController.password}"
+                                                toggleMask="true"
+                                                redisplay="true" style="width: 100%"
+                                                requiredMessage="Haslo jest wymagane" title="Haslo"/>
+                                    <p:outputLabel for="@previous" value="Haslo:"/>
                                     <p:message for="password_login"/>
                                 </span>
+                                </div>
+                                <h:outputText value="#{loginController.status}" id="status_login"
+                                              styleClass="p-d-block"/>
                             </div>
-                            <h:outputText value="#{loginController.status}" id="status_login" styleClass="p-d-block"/>
-                        </div>
 
-                        <p:commandButton type="submit" update="@form" value="Login" styleClass="ui-button-raised"
-                                         actionListener="#{loginController.execute}">
-                            <f:ajax execute="username_login password_login" render="status_login"/>
-                        </p:commandButton>
-                        <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
+                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login" styleClass="ui-button-raised"
+                                             actionListener="#{loginController.execute}">
+                                <f:ajax execute="username_login password_login" render="status_login"/>
+                            </p:commandButton>
+                            <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
+                        </div>
                     </h:form>
 
                     <f:facet name="footer">
