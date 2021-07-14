@@ -22,32 +22,37 @@
                         Login
                     </f:facet>
                     <f:facet name="subtitle">
-                        Please log in to system.
+                        Prosimy autoryzowac sie.
                     </f:facet>
 
                     <h:form id="login-form">
                         <div class="ui-fluid" style="padding: 20px 0">
                             <div class="p-field" style="margin-bottom: 10px">
                                 <span class="ui-float-label">
-                                    <p:inputText id="username" styleClass="p-d-block" title="Username"
+                                    <p:inputText id="username_login" styleClass="p-d-block" title="Username"
                                                  value="#{loginController.username}"
-                                                 requiredMessage="Username is required." maxlength="30"
-                                                 type="username"/>
-                                    <p:outputLabel for="@previous" value="Username"/>
+                                                 requiredMessage="Username jest wymagane" maxlength="30"
+                                                 type="username" required="true"/>
+                                    <p:outputLabel for="@previous" value="Username:"/>
+                                    <p:message for="username_login"/>
                                 </span>
                             </div>
 
                             <div class="p-field">
                                 <span class="ui-float-label">
-                                    <p:password id="toggle" value="#{loginController.password}" toggleMask="true"
-                                                redisplay="true" style="width: 100%"/>
-                                    <p:outputLabel for="@previous" value="Password"/>
+                                    <p:password id="password_login" value="#{loginController.password}" toggleMask="true"
+                                                redisplay="true" style="width: 100%" requiredMessage="Password jest wymagane"/>
+                                    <p:outputLabel for="@previous" value="Password:"/>
+                                    <p:message for="password_login"/>
                                 </span>
                             </div>
+                            <h:outputText value="#{loginController.status}" id="status_login" styleClass="p-d-block"/>
                         </div>
 
                         <p:commandButton type="submit" update="@form" value="Login" styleClass="ui-button-raised"
-                                         action="${loginController.execute}" ajax="false"/>
+                                         actionListener="#{loginController.execute}">
+                            <f:ajax execute="username_login password_login" render="status_login"/>
+                        </p:commandButton>
                         <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
                     </h:form>
 

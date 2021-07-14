@@ -24,6 +24,8 @@ public class LoginController implements Serializable {
   @NotEmpty
   private String password;
 
+  private String status;
+
   @Inject
   FacesContext facesContext;
   @Inject
@@ -36,6 +38,7 @@ public class LoginController implements Serializable {
 		break;
 	  case SEND_FAILURE:
 		facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Credentials", null));
+		status = "Dane sa nieprawidlowe";
 		break;
 	  case SUCCESS:
 		getExternalContext().redirect(getExternalContext().getRequestContextPath() + "/home.xhtml");
@@ -68,5 +71,13 @@ public class LoginController implements Serializable {
 
   public String getPassword() {
 	return password;
+  }
+
+  public String getStatus() {
+	return status;
+  }
+
+  public void setStatus(String status) {
+	this.status = status;
   }
 }

@@ -3,10 +3,9 @@ package com.example.arioal.arioal.service;
 import com.example.arioal.arioal.entities.User;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -15,13 +14,13 @@ import java.util.Optional;
 @ApplicationScoped
 public class DataService {
 
-  //  @PersistenceContext(unitName = "ArioalJDBC")
-  private static EntityManager entityManager;
+  @PersistenceContext(unitName = "ArioalJDBC")
+  private EntityManager entityManager;
 
   @Inject
   Pbkdf2PasswordHash pbkdf2PasswordHash;
 
-  static {
+/*  static {
 	try {
 	  final String jdbcConfServerPool = "ArioalJDBC";
 	  final String profileStage = FacesContext.getCurrentInstance().getApplication().getProjectStage().toString();
@@ -34,12 +33,12 @@ public class DataService {
 	} catch (Throwable ex) {
 	  throw new ExceptionInInitializerError(ex);
 	}
-  }
+  }*/
 
   @Transactional
   public User createUser(String name, String username, String password, String group) {
 	User newUser = new User(name, username, pbkdf2PasswordHash.generate(password.toCharArray()), group);
-	entityManager.joinTransaction();
+//	entityManager.joinTransaction();
 	entityManager.persist(newUser);
 	entityManager.flush();
 	return newUser;
