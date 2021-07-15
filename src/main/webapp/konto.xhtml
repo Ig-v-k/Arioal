@@ -17,7 +17,36 @@
         </h:head>
 
         <h:body>
+            <div>
+                <h:form>
+                    <p:toolbar>
+                        <p:toolbarGroup>
+                            <p:graphicImage name="resources/images/arioaltype.png"/>
+                        </p:toolbarGroup>
+
+                        <p:toolbarGroup name="right">
+                            <p:commandButton type="button" icon="pi pi-question"
+                                             styleClass="rounded-button ui-button-secondary ui-button-flat"/>
+                            <p:avatar id="konto-avatar_tbr" label="U" styleClass="p-mr-2" shape="circle" click=""/>
+                            <p:menu overlay="true" trigger="konto-avatar_tbr" my="left top" at="left bottom">
+                                <p:submenu label="Options">
+                                    <p:menuitem value="Save (Non-Ajax)" ajax="false"
+                                                icon="pi pi-save"/>
+                                    <p:menuitem value="Update" icon="pi pi-refresh"/>
+                                    <p:menuitem value="Delete" icon="pi pi-times"/>
+                                </p:submenu>
+                                <p:submenu label="Navigations">
+                                    <p:menuitem value="Website" url="http://www.primefaces.org" icon="pi pi-external-link"/>
+                                    <p:menuitem value="Internal" icon="pi pi-upload"/>
+                                </p:submenu>
+                            </p:menu>
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </h:form>
+            </div>
             <div class="p-p-2 p-mx-auto p-mt-3 p-mb-4 p-text-center" style="width: 50%">
+                <p:avatar label="#{kontoView.user.name.charAt(0)}" styleClass="p-mr-2" size="xlarge" shape="circle"
+                          style="background-color: lightskyblue"/>
                 <h1><h:outputText value="#{kontoView.user.name}"/></h1>
                 <p style="color: slategray">Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
                     <p:commandLink value="Wiecej..." action="privacy"/></p>
@@ -76,7 +105,8 @@
                             <p>Przejdź przez kontrolę ustawień prywatności i wybierz opcje, które najbardziej Ci odpowiadają.</p>
                         </f:facet>
                         <f:facet name="footer">
-                            <p:commandButton type="button" value="Zobaczyc rekomendacje (6)" styleClass="ui-button-primary ui-button-flat"
+                            <p:commandButton type="button" value="Zobaczyc rekomendacje (6)"
+                                             styleClass="ui-button-primary ui-button-flat"
                                              style="width: 100%"/>
                         </f:facet>
                     </p:card>
