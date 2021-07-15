@@ -2,39 +2,85 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <f:view>
         <h:head>
             <title>Konto | Arioal</title>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-            <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
+            <link type="text/css" rel="stylesheet" href="resources/css/konto.css"/>
+            <link type="text/css" rel="stylesheet" href="resources/css/primeflex.css"/>
             <link rel="shortcut icon" type="image/x-icon" href="resources/images/arioallogo.png"/>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         </h:head>
 
-        <h:body style="background-color: whitesmoke; height: 100%">
-            <p:tooltip/>
-            <div class="d-center" style="height: 100%">
-                <p:card style="width: 450px; margin: 0">
-                    <f:facet name="title">
-                        <h:outputText value="#{kontoView.user.name}"/>
-                    </f:facet>
-                    <f:facet name="subtitle">
-                        <div class="p-text-center">
-                            Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
+        <h:body>
+            <div class="p-p-2 p-mx-auto p-mt-3 p-mb-4 p-text-center" style="width: 50%">
+                <h1><h:outputText value="#{kontoView.user.name}"/></h1>
+                <p style="color: slategray">Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
+                    <p:commandLink value="Wiecej..." action="privacy"/></p>
+            </div>
+            <div class="p-mt-3 p-mx-auto p-mb-4 p-d-flex" style="width: 50%">
+                <p:panelGrid columns="2" layout="grid" columnClasses="p-col-6, p-col-6">
+                    <p:card>
+                        <f:facet name="title">
+                            Prywatność i personalizacja
+                        </f:facet>
+                        <f:facet name="subtitle">
+                            <p>Dowiedz się, jakie informacje są przechowywane na Twoim koncie i
+                                jakie informacje są używane do personalizacji serwisem Arioal.</p>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:commandButton type="button" value="Zarzadzanie dannymi i personalizacja"
+                                             styleClass="ui-button-primary ui-button-flat"
+                                             style="width: 100%"/>
+                        </f:facet>
+                    </p:card>
+                    <p:card>
+                        <f:facet name="title">
+                            Twoje konto jest chronione
+                        </f:facet>
+                        <f:facet name="subtitle">
+                            <p>Twoje konto przeszło kontrolę bezpieczeństwa. Nie znaleziono zalecanego działania.</p>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:commandButton type="button" value="Szczegoly"
+                                             styleClass="ui-button-primary ui-button-flat"
+                                             style="width: 100%"/>
+                        </f:facet>
+                    </p:card>
+                    <p:card>
+                        <f:facet name="title">
+                            Ilosc stworzonych dzialan oraz ich stabilnosc
+                        </f:facet>
+                        <f:facet name="subtitle">
+                            <p>Ilosc stworzonych przez Was dzialan bedzie sie obslugiwalo poprzez serwis Arioal. Mozliwa ilosc dzialan jest ograniczona</p>
+                        </f:facet>
+                        <div>
+                            <p:progressBar value="26" labelTemplate="{value}%" displayOnly="true"/>
+                            <small>Wykorzystano 26 dzialan z 100 mozliwysch</small>
                         </div>
-                    </f:facet>
-
-                    <div id="konto-card_content-main">
-
-                    </div>
-
-                    <f:facet name="footer">
-                        Arioal dba o bezpieczeństwo Twoich danych. <p:link value="Wiecej..." href="privacy"/>
-                    </f:facet>
-                </p:card>
+                        <f:facet name="footer">
+                            <p:commandButton type="button" value="Zarzadzaj dzialaniami"
+                                             styleClass="ui-button-primary ui-button-flat"
+                                             style="width: 100%"/>
+                        </f:facet>
+                    </p:card>
+                    <p:card>
+                        <f:facet name="title">
+                            Dostepne rekomendacje dla ochrony poufnosci profilu
+                        </f:facet>
+                        <f:facet name="subtitle">
+                            <p>Przejdź przez kontrolę ustawień prywatności i wybierz opcje, które najbardziej Ci odpowiadają.</p>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:commandButton type="button" value="Zobaczyc rekomendacje (6)" styleClass="ui-button-primary ui-button-flat"
+                                             style="width: 100%"/>
+                        </f:facet>
+                    </p:card>
+                </p:panelGrid>
             </div>
         </h:body>
     </f:view>
