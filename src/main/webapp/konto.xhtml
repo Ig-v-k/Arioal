@@ -17,9 +17,23 @@
         <h:body style="background-color: whitesmoke; height: 100%">
             <p:tooltip/>
             <div class="d-center" style="height: 100%">
-                <h:outputText value="#{p:userPrincipal().name}"/>
-                <p:card style="width: 350px; margin: 0">
-                    Main content prodile page
+                <p:card style="width: 450px; margin: 0">
+                    <f:facet name="title">
+                        <h:outputText value="#{kontoView.user.name}"/>
+                    </f:facet>
+                    <f:facet name="subtitle">
+                        <div class="p-text-center">
+                            Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
+                        </div>
+                    </f:facet>
+
+                    <div id="konto-card_content-main">
+
+                    </div>
+
+                    <f:facet name="footer">
+                        Arioal dba o bezpieczeństwo Twoich danych. <p:link value="Wiecej..." href="privacy"/>
+                    </f:facet>
                 </p:card>
             </div>
         </h:body>

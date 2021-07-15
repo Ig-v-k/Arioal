@@ -26,3 +26,10 @@ html {
 #main-content {
     padding: 0.5rem;
 }
+
+#circle-avatar {
+    width: 100px;
+    height: 100px;
+    background: antiquewhite;
+    border-radius: 50%;
+}
