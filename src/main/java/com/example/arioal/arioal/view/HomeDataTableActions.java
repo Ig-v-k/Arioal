@@ -63,9 +63,9 @@ public class HomeDataTableActions implements Serializable {
 	  selectedAction.setId(idLastElem + 1);
 	  selectedAction.setActionStatus(Boolean.parseBoolean(actionStatus));
 	  actionList.add(selectedAction);
-	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Added"));
+	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Action Added"));
 	} else {
-	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Updated"));
+	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Action Updated"));
 	}
 
 	PrimeFaces.current().executeScript("PF('dlg2').hide()");

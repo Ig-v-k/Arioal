@@ -34,7 +34,7 @@
                         <!--<h5 class="p-mt-0 p-mb-3"><i class="pi pi-cog p-mr-1"/>Dzialania</h5>-->
                         <p:tabView id="tabsAction" dynamic="true" cache="true">
                             <p:tab id="plane_day" title="Plan dnia">
-                                <h:form id="formAction">
+                                <h:form id="formAction" rendered="true">
                                     <div class="p-grid p-ai-center vertical-container">
                                         <div class="p-col">
                                             <h5>Plan dnia</h5>
@@ -42,8 +42,8 @@
                                         <div class="p-col-fixed">
                                             <p:button type="button" value="Powieksz"
                                                       styleClass="ui-button-primary ui-button-flat"/>
-                                            <p:button type="button" value="Odswiez"
-                                                      styleClass="ui-button-primary ui-button-flat"/>
+                                            <p:commandButton type="button" value="Odswiez" update="dataTableActions"
+                                                             styleClass="ui-button-primary ui-button-flat"/>
                                             <p:button type="button" value="Pokaz wszystkie"
                                                       styleClass="ui-button-primary ui-button-flat"/>
                                             <p:button type="button" icon="pi pi-question-circle"
@@ -120,7 +120,8 @@
                                             <p:commandButton type="button" icon="pi pi-exclamation-triangle"
                                                              styleClass="rounded-button ui-button-secondary ui-button-flat p-d-block"/>
                                         </p:column>
-                                        <p:column headerText="Kategoria / Priorytet / Opis" field="describeName">
+                                        <p:column headerText="Kategoria / Priorytet / Opis" field="describeName"
+                                                  styleClass="p-p-3">
                                             <div class="d-flex">
                                                 <h6 class="p-m-2"><i class="pi pi-telephone p-mr-1"/><h:outputText
                                                         value="#{act.category}"/></h6>
@@ -153,7 +154,7 @@
                                                                  icon="pi pi-envelope"/>
                                             </p:panelGrid>
                                         </p:column>
-                                        <p:column headerText="Kontakt" field="contactName">
+                                        <p:column headerText="Kontakt" field="contactName" styleClass="p-p-3">
                                             <div class="d-flex">
                                                 <h6 class="p-m-2"><i class="pi arrow-left"/><h:outputText
                                                         value="#{act.contactName}"/></h6>
@@ -178,8 +179,12 @@
                                                       styleClass="rounded-button ui-button-success ui-button-flat"/>
                                         </p:column>
                                         <p:column style="width:30px" exportable="false">
-                                            <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit"
-                                                         saveTitle="Save Row"/>
+                                            <p:commandButton icon="pi pi-pencil" update="tabsAction:formAction:manage-wykonane-content"
+                                                             oncomplete="PF('dlg2').show()" process="@this"
+                                                             styleClass="rounded-button ui-button-secondary ui-button-flat">
+                                                <f:setPropertyActionListener value="#{act}" target="#{dtActionBean.selectedAction}"/>
+                                                <p:resetInput target="tabsAction:formAction:manage-wykonane-content"/>
+                                            </p:commandButton>
                                         </p:column>
 
                                     </p:dataTable>
