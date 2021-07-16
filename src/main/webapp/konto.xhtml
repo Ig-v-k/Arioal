@@ -26,9 +26,31 @@
                         </p:toolbarGroup>
 
                         <p:toolbarGroup name="right">
-                            <p:commandButton type="button" icon="pi pi-question"
-                                             styleClass="rounded-button ui-button-secondary ui-button-flat"/>
-                            <p:avatar id="konto-avatar_tbr" label="#{kontoView.user.name.charAt(0)}" styleClass="p-mr-2"
+                            <p:commandButton id="help-btn" type="button" icon="pi pi-question-circle"
+                                             styleClass="rounded-button ui-button-secondary ui-button-flat p-mr-3"/>
+                            <p:menu overlay="true" trigger="help-btn" my="left top" at="left bottom">
+                                <p:submenu label="Pomoc">
+                                    <p:menuitem value="Odniesienia" icon="pi pi-cog"/>
+                                    <p:menuitem value="Zostaw opinie" icon="pi pi-book"/>
+                                </p:submenu>
+                            </p:menu>
+
+                            <p:commandButton id="moduls-btn" icon="pi pi-th-large"
+                                             styleClass="rounded-button ui-button-secondary ui-button-flat p-mr-3"/>
+                            <p:menu overlay="true" trigger="moduls-btn" my="left top" at="left bottom">
+                                <p:submenu label="Moduly">
+                                    <p:menuitem value="Dzialania" ajax="false"
+                                                icon="pi pi-cog"/>
+                                    <p:menuitem value="Kontakty" icon="pi pi-book"/>
+                                    <p:menuitem value="Kalendarz" icon="pi pi-calendar"/>
+                                    <p:menuitem value="Pliki" url="http://www.primefaces.org"
+                                                icon="pi pi-file"/>
+                                    <p:menuitem value="Raporty" icon="pi pi-pencil"/>
+                                    <p:menuitem value="Admin" icon="pi pi-key"/>
+                                </p:submenu>
+                            </p:menu>
+
+                            <p:avatar id="konto-avatar_tbr" label="#{kontoView.user.name.charAt(0)}"
                                       shape="circle" click="" style="background-color: lightskyblue"/>
                             <p:menu overlay="true" trigger="konto-avatar_tbr" my="left top" at="left bottom">
                                 <p:submenu label="Options">
@@ -78,75 +100,103 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="p-p-2 p-mx-auto p-mt-3 p-mb-4 p-text-center" style="width: 50%">
-                        <p:avatar label="#{kontoView.user.name.charAt(0)}" styleClass="p-mr-2" size="xlarge"
-                                  shape="circle"
-                                  style="background-color: lightskyblue"/>
-                        <h1><h:outputText value="#{kontoView.user.name}"/></h1>
-                        <p style="color: slategray">Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
-                            <p:commandLink value="Wiecej..." action="privacy"/></p>
-                    </div>
-                    <div class="p-mt-3 p-mx-auto p-mb-4 p-d-flex" style="width: 50%">
-                        <p:panelGrid columns="2" layout="grid" columnClasses="p-col-6, p-col-6">
+                <div style="width: 100%; margin-bottom: 100px">
+                    <div class="p-mx-auto" style="width: 50%">
+                        <div>
+                            <div class="p-p-2 p-mx-auto p-mt-3 p-mb-4 p-text-center">
+                                <p:avatar label="#{kontoView.user.name.charAt(0)}" styleClass="p-mr-2" size="xlarge"
+                                          shape="circle"
+                                          style="background-color: lightskyblue"/>
+                                <h1><h:outputText value="#{kontoView.user.name}"/></h1>
+                                <p style="color: slategray">Dostosuj ustawienia prywatności i zabezpieczeń, aby jeszcze lepiej korzystać z serwisu Arioal.
+                                    <p:commandLink value="Wiecej..." action="privacy"/></p>
+                            </div>
+                            <div class="p-mt-3 p-mx-auto p-mb-4 p-d-flex">
+                                <p:panelGrid columns="2" layout="grid" columnClasses="p-col-6, p-col-6">
+                                    <p:card>
+                                        <f:facet name="title">
+                                            Prywatność i personalizacja
+                                        </f:facet>
+                                        <f:facet name="subtitle">
+                                            <p>Dowiedz się, jakie informacje są przechowywane na Twoim koncie i
+                                                jakie informacje są używane do personalizacji serwisem Arioal.</p>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <p:commandButton type="button" value="Zarzadzanie dannymi i personalizacja"
+                                                             styleClass="ui-button-primary ui-button-flat"
+                                                             style="width: 100%"/>
+                                        </f:facet>
+                                    </p:card>
+                                    <p:card>
+                                        <f:facet name="title">
+                                            Twoje konto jest chronione
+                                        </f:facet>
+                                        <f:facet name="subtitle">
+                                            <p>Twoje konto przeszło kontrolę bezpieczeństwa. Nie znaleziono zalecanego działania.</p>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <p:commandButton type="button" value="Szczegoly"
+                                                             styleClass="ui-button-primary ui-button-flat"
+                                                             style="width: 100%"/>
+                                        </f:facet>
+                                    </p:card>
+                                    <p:card>
+                                        <f:facet name="title">
+                                            Ilosc stworzonych dzialan oraz ich stabilnosc
+                                        </f:facet>
+                                        <f:facet name="subtitle">
+                                            <p>Ilosc stworzonych przez Was dzialan bedzie sie obslugiwalo poprzez serwis Arioal. Mozliwa ilosc dzialan jest ograniczona</p>
+                                        </f:facet>
+                                        <div>
+                                            <p:progressBar value="26" labelTemplate="{value}%" displayOnly="true"/>
+                                            <small>Wykorzystano 284 dzialan z 1500 mozliwych</small>
+                                        </div>
+                                        <f:facet name="footer">
+                                            <p:commandButton type="button" value="Zarzadzaj dzialaniami"
+                                                             styleClass="ui-button-primary ui-button-flat"
+                                                             style="width: 100%"/>
+                                        </f:facet>
+                                    </p:card>
+                                    <p:card>
+                                        <f:facet name="title">
+                                            Dostepne rekomendacje dla ochrony poufnosci profilu
+                                        </f:facet>
+                                        <f:facet name="subtitle">
+                                            <p>Przejdź przez kontrolę ustawień prywatności i wybierz opcje, które najbardziej Ci odpowiadają.</p>
+                                        </f:facet>
+                                        <f:facet name="footer">
+                                            <p:commandButton type="button" value="Zobaczyc rekomendacje (6)"
+                                                             styleClass="ui-button-primary ui-button-flat"
+                                                             style="width: 100%"/>
+                                        </f:facet>
+                                    </p:card>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                        <div class="p-mb-6">
                             <p:card>
                                 <f:facet name="title">
-                                    Prywatność i personalizacja
+                                    Nie znalezliscie tego, czego szukali?
                                 </f:facet>
-                                <f:facet name="subtitle">
-                                    <p>Dowiedz się, jakie informacje są przechowywane na Twoim koncie i
-                                        jakie informacje są używane do personalizacji serwisem Arioal.</p>
-                                </f:facet>
-                                <f:facet name="footer">
-                                    <p:commandButton type="button" value="Zarzadzanie dannymi i personalizacja"
-                                                     styleClass="ui-button-primary ui-button-flat"
-                                                     style="width: 100%"/>
-                                </f:facet>
-                            </p:card>
-                            <p:card>
-                                <f:facet name="title">
-                                    Twoje konto jest chronione
-                                </f:facet>
-                                <f:facet name="subtitle">
-                                    <p>Twoje konto przeszło kontrolę bezpieczeństwa. Nie znaleziono zalecanego działania.</p>
-                                </f:facet>
-                                <f:facet name="footer">
-                                    <p:commandButton type="button" value="Szczegoly"
-                                                     styleClass="ui-button-primary ui-button-flat"
-                                                     style="width: 100%"/>
-                                </f:facet>
-                            </p:card>
-                            <p:card>
-                                <f:facet name="title">
-                                    Ilosc stworzonych dzialan oraz ich stabilnosc
-                                </f:facet>
-                                <f:facet name="subtitle">
-                                    <p>Ilosc stworzonych przez Was dzialan bedzie sie obslugiwalo poprzez serwis Arioal. Mozliwa ilosc dzialan jest ograniczona</p>
-                                </f:facet>
-                                <div>
-                                    <p:progressBar value="26" labelTemplate="{value}%" displayOnly="true"/>
-                                    <small>Wykorzystano 284 dzialan z 1500 mozliwych</small>
+                                <div class="p-d-flex p-flex-column">
+                                    <p:commandButton value="Szukaj na koncie Arioal" icon="pi pi-search"
+                                                     styleClass="ui-button-secondary ui-button-flat p-text-left p-pl-3"/>
+                                    <p:divider styleClass="p-my-2"/>
+                                    <p:commandButton value="Zobaczyc pomoc" icon="pi pi-question-circle"
+                                                     styleClass="ui-button-secondary ui-button-flat p-text-left p-pl-3"/>
+                                    <p:divider styleClass="p-my-2"/>
+                                    <p:commandButton value="Wyslac komentarz" icon="pi pi-comment"
+                                                     styleClass="ui-button-secondary ui-button-flat p-text-left p-pl-3"/>
                                 </div>
-                                <f:facet name="footer">
-                                    <p:commandButton type="button" value="Zarzadzaj dzialaniami"
-                                                     styleClass="ui-button-primary ui-button-flat"
-                                                     style="width: 100%"/>
-                                </f:facet>
                             </p:card>
-                            <p:card>
-                                <f:facet name="title">
-                                    Dostepne rekomendacje dla ochrony poufnosci profilu
-                                </f:facet>
-                                <f:facet name="subtitle">
-                                    <p>Przejdź przez kontrolę ustawień prywatności i wybierz opcje, które najbardziej Ci odpowiadają.</p>
-                                </f:facet>
-                                <f:facet name="footer">
-                                    <p:commandButton type="button" value="Zobaczyc rekomendacje (6)"
-                                                     styleClass="ui-button-primary ui-button-flat"
-                                                     style="width: 100%"/>
-                                </f:facet>
-                            </p:card>
-                        </p:panelGrid>
+                        </div>
+                        <div class="p-d-flex">
+                            <p class="p-px-4">
+                                Te ustawienia są widoczne tylko dla Ciebie. Zalecamy również sprawdzenie ustawień
+                                w Arioal Konto. Arioal dba o bezpieczeństwo Twoich danych. <p:commandLink value="Wiecej..." action="privacy"/>
+                            </p>
+                            <i class="pi pi-shield p-p-3" style="font-size: 40px"/>
+                        </div>
                     </div>
                 </div>
             </div>
