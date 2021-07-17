@@ -68,8 +68,8 @@
                             </div>
 
                             <p:commandButton id="login-submit" type="submit" update="@form" value="Zarejestrowac"
-                                             styleClass="ui-button-raised"
-                                             actionListener="#{loginController.execute}">
+                                             styleClass="ui-button-raised p-mr-2"
+                                             actionListener="#{registrationController.execute}">
                                 <f:ajax execute="username_login email_login password_login" render="status_login"/>
                             </p:commandButton>
                             <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>

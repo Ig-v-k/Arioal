@@ -35,6 +35,6 @@ public class PasswordValidator implements Validator<String> {
 	  throw new ValidatorException(new FacesMessage(
 			FacesMessage.SEVERITY_ERROR,
 			this.getClass().getSimpleName() + ": Password Validation failed",
-			"Invalid password."));
+			"Haslo podane nie prawidlowo."));
   }
 }

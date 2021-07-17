@@ -20,7 +20,7 @@ public class EmailValidator implements Validator<String> {
 	if (!matcher.matches())
 	  throw new ValidatorException(new FacesMessage(
 			FacesMessage.SEVERITY_ERROR,
-			this.getClass().getSimpleName() + ": Password Validation failed",
-			"Invalid password."));
+			this.getClass().getSimpleName() + ": Email Validation failed",
+			"Email podany nieprawidlowo."));
   }
 }

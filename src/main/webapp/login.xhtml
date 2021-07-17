@@ -55,7 +55,7 @@
                                               styleClass="p-d-block"/>
                             </div>
 
-                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login" styleClass="ui-button-raised"
+                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login" styleClass="ui-button-raised p-mr-2"
                                              actionListener="#{loginController.execute}">
                                 <f:ajax execute="username_login password_login" render="status_login"/>
                             </p:commandButton>
