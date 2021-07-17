@@ -13,7 +13,6 @@ import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.io.Serializable;
 

@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <f:view>
         <h:head>
-            <title>Login | Arioal</title>
+            <title>Rejestracja | Arioal</title>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <link type="text/css" rel="stylesheet" href="resources/css/layout.css"/>
             <link rel="shortcut icon" type="image/x-icon" href="resources/images/arioallogo.png"/>
@@ -20,11 +20,10 @@
                     <f:facet name="title">
                         <h:graphicImage value="resources/images/arioaltype.png" width="90"/>
                         <br/>
-                        Login
+                        Rejestracja
                     </f:facet>
                     <f:facet name="subtitle">
-                        Prosimy autoryzowac sie. <i class="pi pi-info-circle"
-                                                    title="1.Admin: vladimir, vladimirpass 2.User: igor, igorpass"/>
+                        Prosimy zarejestrowac sie.
                     </f:facet>
 
                     <h:form id="login-form">
@@ -55,7 +54,8 @@
                                               styleClass="p-d-block"/>
                             </div>
 
-                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login" styleClass="ui-button-raised"
+                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login"
+                                             styleClass="ui-button-raised"
                                              actionListener="#{loginController.execute}">
                                 <f:ajax execute="username_login password_login" render="status_login"/>
                             </p:commandButton>
@@ -66,7 +66,7 @@
                     <f:facet name="footer">
                         <div class="p-d-flex p-jc-between">
                             <p:link value="Source code" href="https://github.com/Ig-v-k/Arioal"/>
-                            <p:link value="Rejestracja" outcome="signin" style="float: right"/>
+                            <p:commandButton value="Rejestracja" action="signin"/>
                         </div>
                     </f:facet>
                 </p:card>

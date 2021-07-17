@@ -21,10 +21,11 @@ public class SecurityFilter implements Filter {
 	HttpServletResponse response = (HttpServletResponse) servletResponse;
 	Principal principalUser = securityContext.getCallerPrincipal();
 
-	final String loginUrl = request.getContextPath() + "/login.xhtml?faces-redirect=true";
+	final String loginUrl = request.getContextPath() + "/login.xhtml";
+	final String signinUrl = request.getContextPath() + "/signin.xhtml";
 
 	if (!request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER)) {
-	  if (!request.getServletPath().equals("/login.xhtml") && !request.getServletPath().equals(loginUrl)) {
+	  if (!request.getServletPath().equals(loginUrl) && !request.getServletPath().equals(signinUrl)) {
 		if (principalUser == null) {
 		  if ("partial/ajax".equals(request.getHeader("Faces-Request"))) {
 			response.setContentType("text/xml");

@@ -23,7 +23,8 @@ public class PasswordValidator implements Validator<String> {
    * .{8,}             # anything, at least eight places though
    * $                 # end-of-string
    */
-  Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
+  private static final Pattern pattern =
+		Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
   @Override
   public void validate(FacesContext facesContext, UIComponent uiComponent, String value) throws ValidatorException {
