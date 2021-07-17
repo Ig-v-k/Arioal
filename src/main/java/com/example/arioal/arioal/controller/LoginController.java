@@ -1,5 +1,7 @@
 package com.example.arioal.arioal.controller;
 
+import com.example.arioal.arioal.util.AuthenticationUtil;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -30,7 +32,7 @@ public class LoginController implements Serializable {
   @Inject
   FacesContext facesContext;
   @Inject
-  SecurityContext securityContext;
+  AuthenticationUtil authenticate;
 
   public void execute() throws IOException {
 	switch (processAuthentication()) {
@@ -48,10 +50,7 @@ public class LoginController implements Serializable {
   }
 
   private AuthenticationStatus processAuthentication() {
-	ExternalContext ec = getExternalContext();
-	return securityContext.authenticate((HttpServletRequest) ec.getRequest(),
-		  (HttpServletResponse) ec.getResponse(),
-		  AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(username, password)));
+    return authenticate.authenticationStatus(getExternalContext(), username, password);
   }
 
   private ExternalContext getExternalContext() {

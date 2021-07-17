@@ -31,6 +31,16 @@
                             <div class="ui-fluid" style="padding: 20px 0">
                                 <div class="p-field" style="margin-bottom: 10px">
                                 <span class="ui-float-label">
+                                    <p:inputText id="name_login" styleClass="p-d-block" title="Name"
+                                                 value="#{registrationController.name}" maxlength="100"
+                                                 type="name"/>
+                                    <p:outputLabel for="@previous" value="Name:"/>
+                                    <small class="p-d-block">Imie i Nazwisko</small>
+                                </span>
+                                </div>
+
+                                <div class="p-field" style="margin-bottom: 10px">
+                                <span class="ui-float-label">
                                     <p:inputText id="username_login" styleClass="p-d-block" title="Login"
                                                  value="#{registrationController.username}"
                                                  requiredMessage="Login jest wymagane" maxlength="40"
@@ -58,7 +68,9 @@
                                     <p:password id="password_login" value="#{registrationController.password}"
                                                 toggleMask="true"
                                                 redisplay="true" style="width: 100%" required="true"
-                                                requiredMessage="Haslo jest wymagane" title="Haslo"/>
+                                                requiredMessage="Haslo jest wymagane" title="Haslo">
+                                        <f:validator validatorId="passwordValidator"/>
+                                    </p:password>
                                     <p:outputLabel for="@previous" value="Haslo:"/>
                                     <p:message for="password_login"/>
                                 </span>
@@ -70,7 +82,7 @@
                             <p:commandButton id="login-submit" type="submit" update="@form" value="Zarejestrowac"
                                              styleClass="ui-button-raised p-mr-2"
                                              actionListener="#{registrationController.execute}">
-                                <f:ajax execute="username_login email_login password_login" render="status_login"/>
+                                <f:ajax execute="name_login username_login email_login password_login" render="status_login"/>
                             </p:commandButton>
                             <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
                         </div>

@@ -1,7 +1,7 @@
 package com.example.arioal.arioal.view;
 
 import com.example.arioal.arioal.entities.User;
-import com.example.arioal.arioal.service.DataService;
+import com.example.arioal.arioal.repository.DataRepository;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @ViewScoped
 public class KontoView implements Serializable {
   @Inject
-  DataService dataService;
+  DataRepository dataRepository;
 //  private UploadedFile uploadedFile;
 //  private StreamedContent streamedContent;
   @Inject
@@ -28,7 +28,7 @@ public class KontoView implements Serializable {
   @PostConstruct
   public void init() {
 	String username = securityContext.getCallerPrincipal().getName();
-	user = dataService.getUser(username);
+	user = dataRepository.findUserByUsername(username);
   }
 
   public User getUser() {

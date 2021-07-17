@@ -1,5 +1,9 @@
 package com.example.arioal.arioal.controller;
 
+import com.example.arioal.arioal.repository.DataRepository;
+import com.example.arioal.arioal.util.AuthenticationUtil;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -19,14 +23,33 @@ public class RegistrationController implements Serializable {
   private String password;
   @NotEmpty
   private String email;
+  private String name;
   private String status;
 
   @Inject
   FacesContext facesContext;
 
+  @Inject
+  DataRepository dataRepository;
+
+  @Inject
+  AuthenticationUtil authenticationUtil;
+
   public void execute() {
 	try {
-	  facesContext.getExternalContext().redirect(facesContext.getExternalContext().getRequestContextPath() + "/home.xhtml");
+	  dataRepository.addUser(name, username, email, password, "user");
+	  switch (authenticationUtil.authenticationStatus(facesContext.getExternalContext(), username, password)) {
+		case SEND_CONTINUE:
+		  facesContext.responseComplete();
+		  break;
+		case SEND_FAILURE:
+		  facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Credentials", null));
+		  status = "Dane sa nieprawidlowe, sprobuj ponownie";
+		  break;
+		case SUCCESS:
+		  facesContext.getExternalContext().redirect(facesContext.getExternalContext().getRequestContextPath() + "/home.xhtml");
+		  break;
+	  }
 	} catch (IOException e) {
 	  status = "Wprowadzone nieprawidlowe dane.";
 	  e.printStackTrace();
@@ -63,5 +86,13 @@ public class RegistrationController implements Serializable {
 
   public void setStatus(String status) {
 	this.status = status;
+  }
+
+  public String getName() {
+	return name;
+  }
+
+  public void setName(String name) {
+	this.name = name;
   }
 }

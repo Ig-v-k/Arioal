@@ -1,7 +1,7 @@
 package com.example.arioal.arioal.controller;
 
 import com.example.arioal.arioal.entities.User;
-import com.example.arioal.arioal.service.DataService;
+import com.example.arioal.arioal.repository.DataRepository;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +20,7 @@ import java.util.Optional;
 @RequestScoped
 public class HomeController implements Serializable {
   @Inject
-  DataService dataService;
+  DataRepository dataRepository;
 
   @Inject
   SecurityContext securityContext;
@@ -34,7 +34,7 @@ public class HomeController implements Serializable {
   public void initialize() {
 	Principal principal = securityContext.getCallerPrincipal();
 	String username = (principal == null) ? "Anonymous" : principal.getName();
-	this.currentUser = dataService.getUser(username);
+	this.currentUser = dataRepository.findUserByUsername(username);
   }
 
   public User getCurrentUser() {

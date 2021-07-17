@@ -1,4 +1,4 @@
-package com.example.arioal.arioal.service;
+package com.example.arioal.arioal.repository;
 
 import com.example.arioal.arioal.entities.User;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-public class DataService {
+public class DataRepository implements CRUDDataRepository {
 
   @PersistenceContext(unitName = "ArioalJDBC")
   private EntityManager entityManager;
@@ -36,7 +36,8 @@ public class DataService {
   }*/
 
   @Transactional
-  public User createUser(String name, String username, String email, String password, String group) {
+  @Override
+  public User addUser(String name, String username, String email, String password, String group) {
 	User newUser = new User(name, username, email, pbkdf2PasswordHash.generate(password.toCharArray()), group);
 //	entityManager.joinTransaction();
 	entityManager.persist(newUser);
@@ -44,11 +45,13 @@ public class DataService {
 	return newUser;
   }
 
-  public List<User> getAllUsers() {
+  @Override
+  public List<User> allUsers() {
 	return entityManager.createNamedQuery("User.all", User.class).getResultList();
   }
 
-  public Optional<User> getUser(String username) {
+  @Override
+  public Optional<User> findUserByUsername(String username) {
 	return entityManager.createNamedQuery("User.byUsername", User.class)
 		  .setParameter("username", username)
 		  .getResultList()
