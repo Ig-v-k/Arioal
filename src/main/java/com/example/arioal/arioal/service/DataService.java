@@ -36,8 +36,8 @@ public class DataService {
   }*/
 
   @Transactional
-  public User createUser(String name, String username, String password, String group) {
-	User newUser = new User(name, username, pbkdf2PasswordHash.generate(password.toCharArray()), group);
+  public User createUser(String name, String username, String email, String password, String group) {
+	User newUser = new User(name, username, email, pbkdf2PasswordHash.generate(password.toCharArray()), group);
 //	entityManager.joinTransaction();
 	entityManager.persist(newUser);
 	entityManager.flush();

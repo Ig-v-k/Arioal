@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 public class PasswordValidator implements Validator<String> {
 
   /**
+   * @see #validate(FacesContext, UIComponent, String) -
+   * - From with the password field, validation method
    * @see #pattern - Regexp Java for password validation
    * ^                 # start-of-string
    * (?=.*[0-9])       # a digit must occur at least once

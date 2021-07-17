@@ -22,6 +22,9 @@ public class User implements Serializable {
   @Column(name = "username", nullable = false, unique = true)
   private String username;
 
+  @Column(name = "user_email", nullable = false, unique = true)
+  private String email;
+
   @Column(name = "user_password", nullable = false)
   private String password;
 
@@ -31,9 +34,10 @@ public class User implements Serializable {
   public User() {
   }
 
-  public User(String name, String username, String password, String group) {
+  public User(String name, String username, String email, String password, String group) {
 	this.name = name;
 	this.username = username;
+	this.email = email;
 	this.password = password;
 	this.group = group;
   }
@@ -78,5 +82,13 @@ public class User implements Serializable {
 	}
 	final User other = (User) obj;
 	return Objects.equals(this.id, other.id);
+  }
+
+  public String getEmail() {
+	return email;
+  }
+
+  public void setEmail(String email) {
+	this.email = email;
   }
 }

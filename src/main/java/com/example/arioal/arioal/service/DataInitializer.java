@@ -12,8 +12,8 @@ public class DataInitializer {
 
   public void execute(@Observes @Initialized(ApplicationScoped.class) Object event) {
 	if (dataService.getAllUsers().isEmpty()) {
-	  dataService.createUser("Vladimir Vysotskyi", "vladimir", "vladimirpass", "admin");
-	  dataService.createUser("Igor Vysotskyi", "igor", "igorpass", "user");
+	  dataService.createUser("Vladimir Vysotskyi", "vladimir", "vladimir@email.com", "vladimirpass", "admin");
+	  dataService.createUser("Igor Vysotskyi", "igor", "igor@email.com", "igorpass", "user");
 	}
   }
 }
