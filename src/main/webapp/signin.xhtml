@@ -32,32 +32,45 @@
                                 <div class="p-field" style="margin-bottom: 10px">
                                 <span class="ui-float-label">
                                     <p:inputText id="username_login" styleClass="p-d-block" title="Login"
-                                                 value="#{loginController.username}"
-                                                 requiredMessage="Login jest wymagany" maxlength="30"
+                                                 value="#{registrationController.username}"
+                                                 requiredMessage="Login jest wymagane" maxlength="40"
                                                  type="username" required="true"/>
                                     <p:outputLabel for="@previous" value="Username:"/>
                                     <p:message for="username_login"/>
                                 </span>
                                 </div>
 
+                                <div class="p-field" style="margin-bottom: 10px">
+                                <span class="ui-float-label">
+                                    <p:inputText id="email_login" styleClass="p-d-block" title="Email"
+                                                 value="#{registrationController.email}"
+                                                 requiredMessage="Email jest wymagane" maxlength="100"
+                                                 type="email" required="true">
+                                        <f:validator validatorId="emailValidator"/>
+                                    </p:inputText>
+                                    <p:outputLabel for="@previous" value="Email:"/>
+                                    <p:message for="email_login"/>
+                                </span>
+                                </div>
+
                                 <div class="p-field">
                                 <span class="ui-float-label">
-                                    <p:password id="password_login" value="#{loginController.password}"
+                                    <p:password id="password_login" value="#{registrationController.password}"
                                                 toggleMask="true"
-                                                redisplay="true" style="width: 100%"
+                                                redisplay="true" style="width: 100%" required="true"
                                                 requiredMessage="Haslo jest wymagane" title="Haslo"/>
                                     <p:outputLabel for="@previous" value="Haslo:"/>
                                     <p:message for="password_login"/>
                                 </span>
                                 </div>
-                                <h:outputText value="#{loginController.status}" id="status_login"
+                                <h:outputText value="#{registrationController.status}" id="status_login"
                                               styleClass="p-d-block"/>
                             </div>
 
-                            <p:commandButton id="login-submit" type="submit" update="@form" value="Login"
+                            <p:commandButton id="login-submit" type="submit" update="@form" value="Zarejestrowac"
                                              styleClass="ui-button-raised"
                                              actionListener="#{loginController.execute}">
-                                <f:ajax execute="username_login password_login" render="status_login"/>
+                                <f:ajax execute="username_login email_login password_login" render="status_login"/>
                             </p:commandButton>
                             <p:commandButton type="reset" value="Clear" styleClass="ui-button-flat"/>
                         </div>
@@ -66,7 +79,7 @@
                     <f:facet name="footer">
                         <div class="p-d-flex p-jc-between">
                             <p:link value="Source code" href="https://github.com/Ig-v-k/Arioal"/>
-                            <p:commandButton value="Rejestracja" action="signin"/>
+                            <p:link value="Login" outcome="login" style="float: right"/>
                         </div>
                     </f:facet>
                 </p:card>
