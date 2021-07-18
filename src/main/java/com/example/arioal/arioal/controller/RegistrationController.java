@@ -1,6 +1,7 @@
 package com.example.arioal.arioal.controller;
 
 import com.example.arioal.arioal.repository.DataRepository;
+import com.example.arioal.arioal.service.ActionDataService;
 import com.example.arioal.arioal.util.AuthenticationUtil;
 
 import javax.faces.application.FacesMessage;
@@ -31,6 +32,10 @@ public class RegistrationController implements Serializable {
 
   @Inject
   DataRepository dataRepository;
+/*
+  @Inject
+  ActionDataService actionDataService;
+*/
 
   @Inject
   AuthenticationUtil authenticationUtil;

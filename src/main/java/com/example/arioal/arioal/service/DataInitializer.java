@@ -11,6 +11,10 @@ import javax.inject.Inject;
 public class DataInitializer {
   @Inject
   DataRepository dataRepository;
+/*
+  @Inject
+  ActionDataRepository actionDataRepository;
+*/
 
   public void execute(@Observes @Initialized(ApplicationScoped.class) Object event) {
 	if (dataRepository.allUsers().isEmpty()) {

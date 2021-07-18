@@ -2,6 +2,7 @@ package com.example.arioal.arioal.repository;
 
 import com.example.arioal.arioal.entities.User;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
+//@Stateless
 public class DataRepository implements CRUDDataRepository {
 
   @PersistenceContext(unitName = "ArioalJDBC")

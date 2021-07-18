@@ -1,6 +1,7 @@
 package com.example.arioal.arioal.controller;
 
 import com.example.arioal.arioal.entities.User;
+import com.example.arioal.arioal.repository.ActionDataRepository;
 import com.example.arioal.arioal.repository.DataRepository;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,10 @@ import java.util.Optional;
 public class HomeController implements Serializable {
   @Inject
   DataRepository dataRepository;
+/*
+  @Inject
+  ActionDataRepository actionDataRepository;
+*/
 
   @Inject
   SecurityContext securityContext;

@@ -17,6 +17,10 @@ import java.util.Optional;
 public class KontoView implements Serializable {
   @Inject
   DataRepository dataRepository;
+  /*
+	@Inject
+	ActionDataRepository actionDataRepository;
+  */
 //  private UploadedFile uploadedFile;
 //  private StreamedContent streamedContent;
   @Inject

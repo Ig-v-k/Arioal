@@ -9,11 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.AuthenticationStatus;
-import javax.security.enterprise.SecurityContext;
-import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
-import javax.security.enterprise.credential.UsernamePasswordCredential;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.io.Serializable;
@@ -50,7 +45,7 @@ public class LoginController implements Serializable {
   }
 
   private AuthenticationStatus processAuthentication() {
-    return authenticate.authenticationStatus(getExternalContext(), username, password);
+	return authenticate.authenticationStatus(getExternalContext(), username, password);
   }
 
   private ExternalContext getExternalContext() {
